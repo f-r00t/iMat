@@ -30,7 +30,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
             Product p = new Product();
             p = IMatDataHandler.getInstance().getProduct(i+10);
             ImageIcon icon = IMatDataHandler.getInstance().
-                    getImageIcon(p, 55, 55);
+                    getImageIcon(p, 60, 60);
             jPanel2.add(new JLabel(icon));
         }
     }
