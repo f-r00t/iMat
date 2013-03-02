@@ -10,7 +10,9 @@
  */
 package imat;
 
-import java.awt.*;
+
+import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.*;
 
 import se.chalmers.ait.dat215.project.*;
@@ -29,6 +31,7 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
             Product p;
             p = IMatDataHandler.getInstance().getProduct(i+10);
             FoodPanel fp = new FoodPanel(p, 120, 120);
+            fp.validate();
             jPanel1.add(fp);
         }
     }
@@ -86,6 +89,11 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void addPanels(FoodPanel p){
+        p.action();
         jPanel1.add(p);
+    }
+
+    public void removePanels() {
+        jPanel1.removeAll();
     }
 }

@@ -10,6 +10,18 @@
  */
 package imat;
 
+
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
+
 /**
  *
  * @author zapray
@@ -19,8 +31,47 @@ public class SearchPanel extends javax.swing.JPanel {
     /** Creates new form SearchPanel */
     public SearchPanel() {
         initComponents();
+        jTextField1.getDocument().addDocumentListener(
+                new SearchListener(new FoodMatrixPanel(), jTextField1));
+        
     }
+    private class SearchListener implements DocumentListener {
+        private FoodMatrixPanel panel;
+        private JTextField textField;
+        private final int FOODPANELSIZE = 120;
+        
+        public SearchListener(FoodMatrixPanel panel, JTextField textField) {
+            this.panel = panel;
+            this.textField = textField;
+            
+        }
+        public void insertUpdate(DocumentEvent e) {            
+            loadNewSearch();
+        }
+        /**
+         * 
+         */
+        private void loadNewSearch(){
+            if(!(IMatView.getMainPanel() instanceof FoodMatrixPanel)) {
+                IMatView.setMainPanelto(panel);
+            }
+            panel.removePanels();
+            List<Product> productList = IMatDataHandler.getInstance().
+                    findProducts(textField.getText());
+            for(Product product : productList) {
+                panel.add(new FoodPanel(product, FOODPANELSIZE, FOODPANELSIZE));
+            }
+        }
 
+        public void removeUpdate(DocumentEvent e) {           
+            loadNewSearch();
+        }
+
+        public void changedUpdate(DocumentEvent e) {
+            //noting, not supported by JTextFields
+        }
+        
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -257,7 +308,7 @@ public class SearchPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-// TODO add your handling code here:
+    
 }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
