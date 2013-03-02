@@ -26,7 +26,7 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new GridLayout(3, 3, 30, 30));
         
         for(int i = 0; i < 9; i++){
-            Product p = new Product();
+            Product p;
             p = IMatDataHandler.getInstance().getProduct(i+10);
             FoodPanel fp = new FoodPanel(p, 120, 120);
             jPanel1.add(fp);
