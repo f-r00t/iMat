@@ -31,16 +31,16 @@ public class SplashPanel extends javax.swing.JPanel {
         addSavedPurchases(null);
     }
     
-    public void addChosenProducts(List<Product> products){
+    private void addChosenProducts(List<Product> products){
         for(int i = 0; i < 3; i++){
-            Product p = new Product();
+            Product p;
             p = IMatDataHandler.getInstance().getProduct(i+10);
             FoodPanel fp = new FoodPanel(p, 120, 120);
             jPanel5.add(fp);
         }
     }
     
-    public void addLatestPurchases(List<Order> products){
+    private void addLatestPurchases(List<Order> products){
         
         jPanel16.setLayout(new GridLayout(5, 1, 0, 15));
         
@@ -56,7 +56,7 @@ public class SplashPanel extends javax.swing.JPanel {
         */
     }
     
-    public void addSavedPurchases(List<Product> products){
+    private void addSavedPurchases(List<Product> products){
         
         jPanel15.setLayout(new GridLayout(5, 1, 0, 15));
         
