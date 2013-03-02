@@ -25,9 +25,9 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
     public FoodMatrixPanel() {
         initComponents();
         
-        jPanel1.setLayout(new GridLayout(3, 3, 30, 30));
+        jPanel1.setLayout(new GridLayout(5, 3, 30, 30));
         
-        for(int i = 0; i < 9; i++){
+        for(int i = 0; i < 15; i++){
             Product p;
             p = IMatDataHandler.getInstance().getProduct(i+10);
             FoodPanel fp = new FoodPanel(p, 120, 120);
@@ -47,47 +47,43 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(450, 525));
+        setMaximumSize(new java.awt.Dimension(99999, 99999));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(450, 525));
+        setPreferredSize(new java.awt.Dimension(0, 0));
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(450, 525));
+        jPanel1.setMinimumSize(new java.awt.Dimension(2, 2));
         jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(450, 525));
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 517, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 517, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.GridLayout(1, 3, 20, 10));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 517, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+            .add(0, 831, Short.MAX_VALUE)
+            .add(0, 831, Short.MAX_VALUE)
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 517, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+            .add(0, 537, Short.MAX_VALUE)
+            .add(0, 537, Short.MAX_VALUE)
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createSequentialGroup()
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
+    public void setLayout(int row, int col){
+        jPanel1.setLayout(new GridLayout(row, col, 15, 15));
+    }
     public void addPanels(FoodPanel p){
         p.validate();
         jPanel1.add(p);

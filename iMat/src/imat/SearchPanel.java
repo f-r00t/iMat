@@ -11,6 +11,7 @@
 package imat;
 
 
+import java.awt.GridLayout;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,8 +59,10 @@ public class SearchPanel extends javax.swing.JPanel {
             panel.removePanels();
             List<Product> productList = IMatDataHandler.getInstance().
                     findProducts(textField.getText());
+            
             for(Product product : productList) {
-                panel.add(new FoodPanel(product, FOODPANELSIZE, FOODPANELSIZE));
+                panel.setLayout(((productList.size()/3)+1), 3);
+                panel.addPanels(new FoodPanel(product, FOODPANELSIZE, FOODPANELSIZE));  
             }
             panel.repaint();
         }

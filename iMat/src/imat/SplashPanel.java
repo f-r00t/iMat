@@ -34,7 +34,7 @@ public class SplashPanel extends javax.swing.JPanel {
     private void addChosenProducts(List<Product> products){
         for(int i = 0; i < 3; i++){
             Product p;
-            p = IMatDataHandler.getInstance().getProduct(i+10);
+            p = IMatDataHandler.getInstance().getProduct(i+1);
             FoodPanel fp = new FoodPanel(p, 120, 120);
             jPanel5.add(fp);
         }
@@ -109,7 +109,6 @@ public class SplashPanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 140));
-        jPanel1.setSize(new java.awt.Dimension(500, 200));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -124,7 +123,7 @@ public class SplashPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+            .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -143,19 +142,19 @@ public class SplashPanel extends javax.swing.JPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 601, Short.MAX_VALUE)
+            .add(0, 498, Short.MAX_VALUE)
             .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(jPanel8Layout.createSequentialGroup()
                     .addContainerGap()
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 172, Short.MAX_VALUE)
+            .add(0, 118, Short.MAX_VALUE)
             .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(jPanel8Layout.createSequentialGroup()
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
