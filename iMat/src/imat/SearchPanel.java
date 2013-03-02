@@ -61,6 +61,7 @@ public class SearchPanel extends javax.swing.JPanel {
             for(Product product : productList) {
                 panel.add(new FoodPanel(product, FOODPANELSIZE, FOODPANELSIZE));
             }
+            panel.repaint();
         }
 
         public void removeUpdate(DocumentEvent e) {           

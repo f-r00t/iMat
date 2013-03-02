@@ -89,8 +89,9 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void addPanels(FoodPanel p){
-        p.action();
+        p.validate();
         jPanel1.add(p);
+        this.repaint();
     }
 
     public void removePanels() {
