@@ -11,6 +11,7 @@
 package imat;
 
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.*;
@@ -24,16 +25,6 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
     
     public FoodMatrixPanel() {
         initComponents();
-        
-        jPanel1.setLayout(new GridLayout(5, 3, 30, 30));
-        
-        for(int i = 0; i < 15; i++){
-            Product p;
-            p = IMatDataHandler.getInstance().getProduct(i+10);
-            FoodPanel fp = new FoodPanel(p, 120, 120);
-            fp.validate();
-            jPanel1.add(fp);
-        }
     }
 
     /** This method is called from within the constructor to
@@ -45,52 +36,61 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(99999, 99999));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(742, 644));
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(2, 2));
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new java.awt.GridLayout(1, 3, 20, 10));
+        jPanel2.setName("jPanel2"); // NOI18N
+
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 612, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 271, Short.MAX_VALUE)
+        );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 831, Short.MAX_VALUE)
-            .add(0, 831, Short.MAX_VALUE)
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 537, Short.MAX_VALUE)
-            .add(0, 537, Short.MAX_VALUE)
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(layout.createSequentialGroup()
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(353, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
     public void setLayout(int row, int col){
-        jPanel1.setLayout(new GridLayout(row, col, 15, 15));
+        jPanel2.setLayout(new GridLayout(row, col, 25, 25));
     }
     public void addPanels(FoodPanel p){
         p.validate();
-        jPanel1.add(p);
+        jPanel2.add(p);
         this.repaint();
+        totalHeight += 70;
+        this.setPreferredSize(new Dimension(740, totalHeight));
     }
 
     public void removePanels() {
-        jPanel1.removeAll();
+        jPanel2.removeAll();
+        totalHeight = 0;
     }
+    
+    private int totalHeight = 0;
 }
