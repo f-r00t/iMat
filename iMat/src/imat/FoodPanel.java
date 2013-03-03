@@ -13,6 +13,7 @@ package imat;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import se.chalmers.ait.dat215.project.*;
@@ -21,10 +22,25 @@ import se.chalmers.ait.dat215.project.*;
  * @author victorsandell
  */
 public class FoodPanel extends javax.swing.JPanel {
-
+    
+    private void addItemsToCart(int amount) {
+        IMatDataHandler.getInstance().getShoppingCart().addProduct(p, amount);
+    }
     /** Creates new form TestPanel */
     public FoodPanel(Product p, int width, int height) {
         initComponents();
+        plusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
+                int amount;
+                try {
+                    amount = Integer.parseInt(amountField.getText());
+                } catch (NumberFormatException ex) {
+                    amount = 0;
+                }
+                addItemsToCart(amount);
+            }
+        });
         
         this.p = p;
         this.width = width;
@@ -37,6 +53,13 @@ public class FoodPanel extends javax.swing.JPanel {
         amountField.setText("1");
         starButton.setIcon(unselectedStar);
     }
+        /*
+    jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+         }
+     * 
+     */
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -216,6 +239,7 @@ public void setIconSize(int width, int height){
     private javax.swing.JButton starButton;
     private javax.swing.JPanel topLabel;
     // End of variables declaration//GEN-END:variables
+
     
     private ImageIcon selectedStar = new ImageIcon(getClass().getResource("resources/starselected.png"));
     private ImageIcon unselectedStar = new ImageIcon(getClass().getResource("resources/starunselected.png"));

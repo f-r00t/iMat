@@ -46,7 +46,7 @@ public class SearchPanel extends javax.swing.JPanel {
             this.textField = textField;
             
         }
-        public void insertUpdate(DocumentEvent e) {            
+        public void insertUpdate(DocumentEvent e) {
             loadNewSearch();
         }
         /**

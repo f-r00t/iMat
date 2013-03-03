@@ -15,6 +15,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingCart;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 
 /**
  * The application's main frame.
@@ -34,8 +38,10 @@ public class IMatView extends FrameView {
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
+        IMatDataHandler.getInstance().getShoppingCart().
+                addShoppingCartListener(new CartListener());
         setMainPanelto(splashPanel);
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);        
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
     }
     private void changeToPreviousMainPanel() {
 
@@ -51,7 +57,6 @@ public class IMatView extends FrameView {
         }
     }
     private static void changeMainPanel(JPanel panel){
-            System.out.println(historyLocation);
             jPanel4.removeAll();
             currentMainPanel = panel;
             jPanel4.add(panel);
@@ -71,6 +76,20 @@ public class IMatView extends FrameView {
     //it is the panel holding the main panel
     public static JPanel getMainPanel() {
         return jPanel4;
+    }
+    /**
+     * private class responsible for updating texts when
+     * changes are made to the shoppingCart.
+     */
+    private class CartListener implements ShoppingCartListener{
+
+        public void shoppingCartChanged(CartEvent ce) {
+            ShoppingCart cart =IMatDataHandler.getInstance().
+                    getShoppingCart();
+            jLabel2.setText(cart.getItems().size() + " varor");
+            jLabel3.setText(cart.getTotal() + " kr");
+        }
+        
     }
     /**
      * Overrides certain initation manually that aren't allowed by netbeans
