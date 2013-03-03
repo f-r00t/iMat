@@ -10,10 +10,9 @@
  */
 package imat;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
+
+import java.util.List;
 import javax.swing.ImageIcon;
 
 import se.chalmers.ait.dat215.project.*;
@@ -51,7 +50,14 @@ public class FoodPanel extends javax.swing.JPanel {
         nameLabel.setText(p.getName());
         priceUnitLabel.setText(p.getPrice() + " "+ p.getUnit());
         amountField.setText("1");
-        starButton.setIcon(unselectedStar);
+        
+        List<Product> favList = IMatDataHandler.getInstance().favorites();
+        
+        if(favList.contains(p)){
+            starButton.setIcon(selectedStar);
+        }else{
+            starButton.setIcon(unselectedStar);
+        }
     }
         /*
     jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -210,10 +216,10 @@ private void amountFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 public void setStarIcon(){
     if(starButton.getIcon() == unselectedStar){
         starButton.setIcon(selectedStar);
-        //addFavorite()
+        IMatDataHandler.getInstance().addFavorite(p);
     }else{
         starButton.setIcon(unselectedStar);
-        //removeFavorite()
+        IMatDataHandler.getInstance().removeFavorite(p);
     }
 }
 
@@ -241,8 +247,10 @@ public void setIconSize(int width, int height){
     // End of variables declaration//GEN-END:variables
 
     
-    private ImageIcon selectedStar = new ImageIcon(getClass().getResource("resources/starselected.png"));
-    private ImageIcon unselectedStar = new ImageIcon(getClass().getResource("resources/starunselected.png"));
+    private ImageIcon selectedStar = new ImageIcon(getClass().getResource
+            ("resources/starselected.png"));
+    private ImageIcon unselectedStar = new ImageIcon(getClass().getResource
+            ("resources/starunselected.png"));
     private Product p;
     private int height;
     private int width;
