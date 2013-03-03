@@ -13,6 +13,8 @@ package imat;
 
 import java.awt.GridLayout;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -40,19 +42,35 @@ public class SearchPanel extends javax.swing.JPanel {
         private FoodMatrixPanel panel;
         private JTextField textField;
         private final int FOODPANELSIZE = 120;
+        private Map<Integer, FoodPanel> searchMap;
         
         public SearchListener(FoodMatrixPanel panel, JTextField textField) {
             this.panel = panel;
             this.textField = textField;
-            
+            searchMap = new TreeMap<Integer, FoodPanel>();
+            for(Product product : IMatDataHandler.getInstance().getProducts()){
+                searchMap.put(product.getProductId(),
+                        new FoodPanel(product, FOODPANELSIZE, FOODPANELSIZE));
+            }
         }
         public void insertUpdate(DocumentEvent e) {
             loadNewSearch();
         }
-        /**
-         * 
-         */
-        private void loadNewSearch(){
+        private void loadNewSearch() {
+            if(!(IMatView.getMainPanel() instanceof FoodMatrixPanel)) {
+                IMatView.setMainPanelto(panel);
+            }
+            panel.removePanels();
+            List<Product> productList = IMatDataHandler.getInstance().
+                    findProducts(textField.getText());
+            
+            for(Product product : productList) {
+                panel.setLayout(((productList.size()/3)+1), 3);
+                panel.addPanels(searchMap.get(product.getProductId()));  
+            }
+            panel.repaint();
+        }
+        private void loadNewSearch2() {
             if(!(IMatView.getMainPanel() instanceof FoodMatrixPanel)) {
                 IMatView.setMainPanelto(panel);
             }
