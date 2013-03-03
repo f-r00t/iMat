@@ -4,45 +4,71 @@
 
 package imat;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import org.jdesktop.application.Action;
-import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
-import org.jdesktop.application.TaskMonitor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Queue;
 import javax.swing.BorderFactory;
-import javax.swing.Timer;
-import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import java.awt.*;
 import javax.swing.JPanel;
 
 /**
  * The application's main frame.
  */
 public class IMatView extends FrameView {
-
+    private static JPanel currentMainPanel;
+    private static List<JPanel> mainPanelHistory;
+    private static int historyLocation;
+    private SplashPanel splashPanel;
+    private kundvagnPanel cartPanel;
+    
     public IMatView(SingleFrameApplication app) {
         super(app);
 
         initComponents();
         manuallyInitComponents();
-        
-        jPanel4.add(new SplashPanel());
-        
-        
+        mainPanelHistory = new ArrayList<JPanel>();
+        splashPanel = new SplashPanel();
+        cartPanel = new kundvagnPanel();
+        setMainPanelto(splashPanel);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);        
     }
-    public static void setMainPanelto(JPanel panel) {
-        jPanel4.removeAll();
-        jPanel4.add(panel);
-        panel.validate();
-        jPanel4.revalidate();
-        jPanel4.repaint();
-        
+    private void changeToPreviousMainPanel() {
+
+        if (historyLocation != 0) {
+            historyLocation--;
+            changeMainPanel(mainPanelHistory.get(historyLocation));
+        }
     }
+    private void changeToNextMainPanel() {
+        if (historyLocation!= mainPanelHistory.size()-1) {
+            historyLocation++;
+            changeMainPanel(mainPanelHistory.get(historyLocation));
+        }
+    }
+    private static void changeMainPanel(JPanel panel){
+            System.out.println(historyLocation);
+            jPanel4.removeAll();
+            currentMainPanel = panel;
+            jPanel4.add(panel);
+            panel.validate();
+            jPanel4.revalidate();
+            jPanel4.repaint();
+    }
+    
+    public static void setMainPanelto(JPanel panel) {
+        if(mainPanelHistory.isEmpty() || panel != mainPanelHistory.get(historyLocation)) {
+            mainPanelHistory.add(panel);
+            historyLocation = mainPanelHistory.size()-1;
+            changeMainPanel(panel);
+        }
+        
+    }//TODO rename, this isnt the mainpanel,
+    //it is the panel holding the main panel
     public static JPanel getMainPanel() {
         return jPanel4;
     }
@@ -120,6 +146,11 @@ public class IMatView extends FrameView {
         jButton1.setName("jButton1"); // NOI18N
         jButton1.setPressedIcon(resourceMap.getIcon("jButton1.pressedIcon")); // NOI18N
         jButton1.setRolloverIcon(resourceMap.getIcon("jButton1.rolloverIcon")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton1);
 
         jButton2.setIcon(resourceMap.getIcon("jButton2.icon")); // NOI18N
@@ -135,6 +166,11 @@ public class IMatView extends FrameView {
         jButton4.setName("jButton4"); // NOI18N
         jButton4.setPressedIcon(resourceMap.getIcon("jButton4.pressedIcon")); // NOI18N
         jButton4.setRolloverIcon(resourceMap.getIcon("jButton4.rolloverIcon")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton4);
 
         jButton3.setIcon(resourceMap.getIcon("jButton3.icon")); // NOI18N
@@ -165,6 +201,11 @@ public class IMatView extends FrameView {
         jButton5.setIcon(resourceMap.getIcon("jButton5.icon")); // NOI18N
         jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
         jButton5.setName("jButton5"); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,7 +238,7 @@ public class IMatView extends FrameView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(219, 219, 219)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(latestPurchasePanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(latestPurchasePanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -208,7 +249,7 @@ public class IMatView extends FrameView {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(latestPurchasePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(latestPurchasePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
@@ -241,9 +282,19 @@ public class IMatView extends FrameView {
 
         jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
         jButton6.setName("jButton6"); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText(resourceMap.getString("jButton7.text")); // NOI18N
         jButton7.setName("jButton7"); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -257,7 +308,7 @@ public class IMatView extends FrameView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addComponent(jButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6))
         );
@@ -277,13 +328,28 @@ public class IMatView extends FrameView {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
- 
+    setMainPanelto(splashPanel);
 }//GEN-LAST:event_jButton1ActionPerformed
 
 private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseMoved
 // TODO add your handling code here:
 }//GEN-LAST:event_jButton1MouseMoved
+
+private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    
+}//GEN-LAST:event_jButton4ActionPerformed
+
+private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    setMainPanelto(cartPanel);
+}//GEN-LAST:event_jButton5ActionPerformed
+
+private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    changeToPreviousMainPanel();
+}//GEN-LAST:event_jButton7ActionPerformed
+
+private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    changeToNextMainPanel();
+}//GEN-LAST:event_jButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -41,6 +41,9 @@
                     <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton1.pressedIcon"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" resourceKey="jButton1.rolloverIcon"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton2">
                   <Properties>
@@ -60,6 +63,9 @@
                     <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton4.pressedIcon"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" resourceKey="jButton4.rolloverIcon"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
@@ -85,7 +91,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="latestPurchasePanel2" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="latestPurchasePanel1" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -99,7 +105,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="latestPurchasePanel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="12" max="32767" attributes="0"/>
                                   <Component id="latestPurchasePanel1" min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -177,6 +183,9 @@
                         <Property name="text" type="java.lang.String" resourceKey="jButton5.text"/>
                         <Property name="name" type="java.lang.String" value="jButton5" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -262,7 +271,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" pref="600" max="32767" attributes="0"/>
+                          <Component id="jLabel1" pref="678" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -284,12 +293,18 @@
                     <Property name="text" type="java.lang.String" resourceKey="jButton6.text"/>
                     <Property name="name" type="java.lang.String" value="jButton6" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton7">
                   <Properties>
                     <Property name="text" type="java.lang.String" resourceKey="jButton7.text"/>
                     <Property name="name" type="java.lang.String" value="jButton7" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
