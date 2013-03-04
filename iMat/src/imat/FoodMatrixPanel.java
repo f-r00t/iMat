@@ -13,6 +13,7 @@ package imat;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
@@ -21,10 +22,14 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author victorsandell
  */
-public class FoodMatrixPanel extends javax.swing.JPanel {
+public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInterface{
     
-    public FoodMatrixPanel() {
+    private String title;
+    
+    public FoodMatrixPanel(String title) {
         initComponents();
+        foodPanels = new ArrayList<FoodPanel>();
+        this.title = title;
     }
 
     /** This method is called from within the constructor to
@@ -44,17 +49,6 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
 
         jPanel2.setName("jPanel2"); // NOI18N
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 612, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 271, Short.MAX_VALUE)
-        );
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,35 +56,53 @@ public class FoodMatrixPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addContainerGap(614, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
+    
+    public String getTitle(){
+        return title;
+    }
+    
+    public void setTitle(String s){
+        this.title = s;
+    }
+    
     public void setLayout(int row, int col){
-        jPanel2.setLayout(new GridLayout(row, col, 25, 25));
+        jPanel2.setLayout(new GridLayout(row, col, 20, 20));
     }
     public void addPanels(FoodPanel p){
-        p.validate();
+        p.revalidate();
         jPanel2.add(p);
         this.repaint();
         totalHeight += 70;
         this.setPreferredSize(new Dimension(740, totalHeight));
+        foodPanels.add(p);
+        reDraw();
     }
 
     public void removePanels() {
         jPanel2.removeAll();
         totalHeight = 0;
+        foodPanels.clear();
     }
     
+    public void reDraw(){
+        for(FoodPanel fp: foodPanels){
+            fp.setStar();
+        }
+    }
+    
+    private List<FoodPanel> foodPanels;
     private int totalHeight = 0;
 }

@@ -72,14 +72,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jToggleButton1" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton2" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton3" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton4" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton5" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton6" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton7" alignment="0" pref="207" max="32767" attributes="0"/>
-              <Component id="jToggleButton8" alignment="0" pref="207" max="32767" attributes="0"/>
+              <Component id="jToggleButton1" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton2" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton3" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton4" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton5" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton6" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton7" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton8" alignment="0" pref="221" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

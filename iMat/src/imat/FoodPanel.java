@@ -51,13 +51,7 @@ public class FoodPanel extends javax.swing.JPanel {
         priceUnitLabel.setText(p.getPrice() + " "+ p.getUnit());
         amountField.setText("1");
         
-        List<Product> favList = IMatDataHandler.getInstance().favorites();
-        
-        if(favList.contains(p)){
-            starButton.setIcon(selectedStar);
-        }else{
-            starButton.setIcon(unselectedStar);
-        }
+        setStar();
     }
         /*
     jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -200,9 +194,7 @@ public class FoodPanel extends javax.swing.JPanel {
 
 private void starButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_starButtonActionPerformed
     if(evt.getSource() == starButton) {
-        setStarIcon();
-    }else if(evt.getSource() == plusButton){
-        //addToCartMethod()
+        setFavorite();
     }
 }//GEN-LAST:event_starButtonActionPerformed
 
@@ -213,7 +205,7 @@ private void amountFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
 }//GEN-LAST:event_amountFieldKeyTyped
 
-public void setStarIcon(){
+public void setFavorite(){
     if(starButton.getIcon() == unselectedStar){
         starButton.setIcon(selectedStar);
         IMatDataHandler.getInstance().addFavorite(p);
@@ -221,6 +213,16 @@ public void setStarIcon(){
         starButton.setIcon(unselectedStar);
         IMatDataHandler.getInstance().removeFavorite(p);
     }
+}
+
+public void setStar(){
+    List<Product> favList = IMatDataHandler.getInstance().favorites();
+        
+        if(favList.contains(p)){
+            starButton.setIcon(selectedStar);
+        }else{
+            starButton.setIcon(unselectedStar);
+        }
 }
 
 public void setProperties(String name, int price, String unit){

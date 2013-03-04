@@ -4,6 +4,7 @@
 
 package imat;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import org.jdesktop.application.Action;
@@ -17,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 
@@ -29,6 +31,9 @@ public class IMatView extends FrameView {
     private static int historyLocation;
     private SplashPanel splashPanel;
     private kundvagnPanel cartPanel;
+    private HistoryPanel historyPanel;
+    private HistoryPanel savedListsPanel;
+    private FoodMatrixPanel favoritePanel;
     
     public IMatView(SingleFrameApplication app) {
         super(app);
@@ -38,10 +43,15 @@ public class IMatView extends FrameView {
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
+        historyPanel = new HistoryPanel("Historik");
+        savedListsPanel = new HistoryPanel("Sparade inköpslistor");
+        favoritePanel  = new FoodMatrixPanel("Favoriter");
         IMatDataHandler.getInstance().getShoppingCart().
                 addShoppingCartListener(new CartListener());
         setMainPanelto(splashPanel);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
+        
+        
     }
     private void changeToPreviousMainPanel() {
 
@@ -59,11 +69,20 @@ public class IMatView extends FrameView {
     private static void changeMainPanel(JPanel panel){
             jPanel4.removeAll();
             currentMainPanel = panel;
-            jPanel4.add(panel);
-            panel.validate();
+            jPanel4.add(panel, BorderLayout.CENTER);
+            panel.revalidate();
+            
+            
+            if(panel instanceof TitleLabelInterface){
+                TitleLabelInterface p = (TitleLabelInterface)panel;
+                setTitle(p.getTitle());
+            }
+            
             jPanel4.revalidate();
             jPanel4.repaint();
     }
+    
+    
     
     public static void setMainPanelto(JPanel panel) {
         if(mainPanelHistory.isEmpty() || panel != mainPanelHistory.get(historyLocation)) {
@@ -90,6 +109,10 @@ public class IMatView extends FrameView {
             jLabel3.setText(cart.getTotal() + " kr");
         }
         
+    }
+    
+    public static void setTitle(String s){
+        jLabel1.setText(s);
     }
     /**
      * Overrides certain initation manually that aren't allowed by netbeans
@@ -133,6 +156,7 @@ public class IMatView extends FrameView {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         latestPurchasePanel1 = new imat.LatestPurchasePanel();
         latestPurchasePanel2 = new imat.LatestPurchasePanel();
@@ -182,6 +206,7 @@ public class IMatView extends FrameView {
 
         jButton4.setIcon(resourceMap.getIcon("jButton4.icon")); // NOI18N
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setToolTipText(resourceMap.getString("jButton4.toolTipText")); // NOI18N
         jButton4.setName("jButton4"); // NOI18N
         jButton4.setPressedIcon(resourceMap.getIcon("jButton4.pressedIcon")); // NOI18N
         jButton4.setRolloverIcon(resourceMap.getIcon("jButton4.rolloverIcon")); // NOI18N
@@ -199,7 +224,25 @@ public class IMatView extends FrameView {
         jButton3.setName("jButton3"); // NOI18N
         jButton3.setPressedIcon(resourceMap.getIcon("jButton3.pressedIcon")); // NOI18N
         jButton3.setRolloverIcon(resourceMap.getIcon("jButton3.rolloverIcon")); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton3);
+
+        jButton8.setIcon(resourceMap.getIcon("jButton8.icon")); // NOI18N
+        jButton8.setToolTipText(resourceMap.getString("jButton8.toolTipText")); // NOI18N
+        jButton8.setBorderPainted(false);
+        jButton8.setName("jButton8"); // NOI18N
+        jButton8.setPressedIcon(resourceMap.getIcon("jButton8.pressedIcon")); // NOI18N
+        jButton8.setRolloverIcon(resourceMap.getIcon("jButton8.rolloverIcon")); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton8);
 
         jPanel1.add(jPanel6);
 
@@ -291,7 +334,6 @@ public class IMatView extends FrameView {
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jPanel4.setName("jPanel4"); // NOI18N
-        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane1.setViewportView(jPanel4);
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -327,7 +369,7 @@ public class IMatView extends FrameView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addComponent(jButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6))
         );
@@ -355,7 +397,7 @@ private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_jButton1MouseMoved
 
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
+    setMainPanelto(historyPanel);
 }//GEN-LAST:event_jButton4ActionPerformed
 
 private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -370,6 +412,22 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     changeToNextMainPanel();
 }//GEN-LAST:event_jButton6ActionPerformed
 
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    setMainPanelto(savedListsPanel);
+}//GEN-LAST:event_jButton3ActionPerformed
+
+private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    favoritePanel.removePanels();
+    
+    List<Product> favList = IMatDataHandler.getInstance().favorites();
+    
+    for(Product p: favList){
+        favoritePanel.addPanels(new FoodPanel(p, 120, 120));
+    }
+    favoritePanel.setLayout(((favList.size()/3)+1), 3);
+    setMainPanelto(favoritePanel);
+}//GEN-LAST:event_jButton8ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -378,7 +436,8 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton8;
+    private static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

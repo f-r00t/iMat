@@ -14,11 +14,13 @@ package imat;
  *
  * @author kimegenvall
  */
-public class kundvagnPanel extends javax.swing.JPanel {
+public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInterface{
 
+    private String title;
     /** Creates new form kundvagnPanel */
     public kundvagnPanel() {
         initComponents();
+        title = "Kundvagn";
     }
 
     /** This method is called from within the constructor to
@@ -122,4 +124,12 @@ public class kundvagnPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton sparaInkopBtn;
     // End of variables declaration//GEN-END:variables
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String s) {
+        ;
+    }
 }

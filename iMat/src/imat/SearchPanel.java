@@ -35,7 +35,7 @@ public class SearchPanel extends javax.swing.JPanel {
     public SearchPanel() {
         initComponents();
         jTextField1.getDocument().addDocumentListener(
-                new SearchListener(new FoodMatrixPanel(), jTextField1));
+                new SearchListener(new FoodMatrixPanel("Sökresultat"), jTextField1));
         
     }
     private class SearchListener implements DocumentListener {
@@ -66,10 +66,13 @@ public class SearchPanel extends javax.swing.JPanel {
             
             for(Product product : productList) {
                 panel.setLayout(((productList.size()/3)+1), 3);
-                panel.addPanels(searchMap.get(product.getProductId()));  
+                panel.addPanels(searchMap.get(product.getProductId()));
+                panel.reDraw();
             }
             panel.repaint();
+            panel.revalidate();
         }
+        
         private void loadNewSearch2() {
             if(!(IMatView.getMainPanel() instanceof FoodMatrixPanel)) {
                 IMatView.setMainPanelto(panel);

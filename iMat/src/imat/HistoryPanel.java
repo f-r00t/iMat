@@ -19,10 +19,12 @@ import se.chalmers.ait.dat215.project.Product;
  *
  * @author victorsandell
  */
-public class HistoryPanel extends javax.swing.JPanel {
+public class HistoryPanel extends javax.swing.JPanel implements TitleLabelInterface{
 
+    private String title;
+    
     /** Creates new form HistoryPanel */
-    public HistoryPanel() {
+    public HistoryPanel(String title) {
         initComponents();
         
         for(int i = 0; i < 6; i++){
@@ -90,9 +92,9 @@ public class HistoryPanel extends javax.swing.JPanel {
                 .add(jLabel2)
                 .add(117, 117, 117)
                 .add(jLabel3)
-                .add(86, 86, 86)
+                .add(47, 47, 47)
                 .add(jLabel7)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -196,6 +198,14 @@ public class HistoryPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
+    public String getTitle(){
+        return title;
+    }
+    
+    public void setTitle(String s){
+        this.title = s;
+    }
+    
     public void addItems(List<Product> p){
         jPanel3.removeAll();
         int n = 0;

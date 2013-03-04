@@ -59,6 +59,7 @@
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" resourceKey="jButton4.icon"/>
                     <Property name="text" type="java.lang.String" resourceKey="jButton4.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="jButton4.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="jButton4" noResource="true"/>
                     <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton4.pressedIcon"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" resourceKey="jButton4.rolloverIcon"/>
@@ -77,6 +78,22 @@
                     <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton3.pressedIcon"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" resourceKey="jButton3.rolloverIcon"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton8">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jButton8.icon"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="jButton8.toolTipText"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="name" type="java.lang.String" value="jButton8" noResource="true"/>
+                    <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton8.pressedIcon"/>
+                    <Property name="rolloverIcon" type="javax.swing.Icon" resourceKey="jButton8.rolloverIcon"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -243,10 +260,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="0"/>
-                    <Property name="rows" type="int" value="1"/>
-                  </Layout>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
               </SubComponents>
             </Container>
@@ -271,7 +285,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" pref="678" max="32767" attributes="0"/>
+                          <Component id="jLabel1" pref="600" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -313,6 +327,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
                     <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
