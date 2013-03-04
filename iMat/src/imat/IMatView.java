@@ -21,18 +21,21 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  * The application's main frame.
  */
 public class IMatView extends FrameView {
+    public static List<ShoppingItemList> savedShoppingListItems;
+    
     private static JPanel currentMainPanel;
     private static List<JPanel> mainPanelHistory;
     private static int historyLocation;
     private SplashPanel splashPanel;
     private kundvagnPanel cartPanel;
-    private HistoryPanel historyPanel;
-    private HistoryPanel savedListsPanel;
+    private SavedListsPanel historyPanel;
+    private SavedListsPanel savedListsPanel;
     private FoodMatrixPanel favoritePanel;
     
     public IMatView(SingleFrameApplication app) {
@@ -43,16 +46,20 @@ public class IMatView extends FrameView {
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
-        historyPanel = new HistoryPanel("Historik");
-        savedListsPanel = new HistoryPanel("Sparade inköpslistor");
+        
+        //savedListsPanel = new SavedListsPanel("Sparade inköpslistor");
         favoritePanel  = new FoodMatrixPanel("Favoriter");
         IMatDataHandler.getInstance().getShoppingCart().
                 addShoppingCartListener(new CartListener());
         setMainPanelto(splashPanel);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
         
-        
+        //Done for later use
+        ListSaveLoad.getInstance();
+        savedShoppingListItems = ListSaveLoad.getInstance().loadList();
+        historyPanel = new SavedListsPanel("Historik", savedShoppingListItems);
     }
+    
     private void changeToPreviousMainPanel() {
 
         if (historyLocation != 0) {
@@ -70,7 +77,6 @@ public class IMatView extends FrameView {
             jPanel4.removeAll();
             currentMainPanel = panel;
             jPanel4.add(panel, BorderLayout.CENTER);
-            panel.revalidate();
             
             
             if(panel instanceof TitleLabelInterface){
@@ -89,6 +95,7 @@ public class IMatView extends FrameView {
             mainPanelHistory.add(panel);
             historyLocation = mainPanelHistory.size()-1;
             changeMainPanel(panel);
+            panel.revalidate();
         }
         
     }//TODO rename, this isnt the mainpanel,
@@ -402,6 +409,8 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     setMainPanelto(cartPanel);
+    System.out.println(savedShoppingListItems.size());
+    ListSaveLoad.getInstance().saveList(savedShoppingListItems);
 }//GEN-LAST:event_jButton5ActionPerformed
 
 private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -417,15 +426,29 @@ private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_jButton3ActionPerformed
 
 private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-    favoritePanel.removePanels();
-    
     List<Product> favList = IMatDataHandler.getInstance().favorites();
+    
+    ////////////test///////////
+    ShoppingItemList sil = new ShoppingItemList();
+    for(Product p: favList){
+        
+        ShoppingItem si = new ShoppingItem(p);
+        si.setAmount(Math.random()+1*10);
+        sil.add(si);
+    }
+    savedShoppingListItems.add(sil);
+    //ListSaveLoad.getInstance().saveList(savedShoppingListItems);
+    /////////////////////////
+    
+    favoritePanel.removePanels();
     
     for(Product p: favList){
         favoritePanel.addPanels(new FoodPanel(p, 120, 120));
     }
     favoritePanel.setLayout(((favList.size()/3)+1), 3);
     setMainPanelto(favoritePanel);
+    favoritePanel.repaint();
+    favoritePanel.revalidate();
 }//GEN-LAST:event_jButton8ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

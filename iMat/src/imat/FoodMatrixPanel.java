@@ -30,6 +30,7 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
         initComponents();
         foodPanels = new ArrayList<FoodPanel>();
         this.title = title;
+        totalHeight = 225;
     }
 
     /** This method is called from within the constructor to
@@ -56,14 +57,14 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(562, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(614, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -79,13 +80,17 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
     }
     
     public void setLayout(int row, int col){
-        jPanel2.setLayout(new GridLayout(row, col, 20, 20));
+        jPanel2.setLayout(new GridLayout(row, col, 10, 10));
     }
     public void addPanels(FoodPanel p){
         p.revalidate();
         jPanel2.add(p);
         this.repaint();
-        totalHeight += 70;
+        
+        if(foodPanels.size() % 3 == 0){
+            totalHeight += 175;
+        }
+        
         this.setPreferredSize(new Dimension(740, totalHeight));
         foodPanels.add(p);
         reDraw();
@@ -93,7 +98,7 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
 
     public void removePanels() {
         jPanel2.removeAll();
-        totalHeight = 0;
+        totalHeight = 225;
         foodPanels.clear();
     }
     
@@ -104,5 +109,5 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
     }
     
     private List<FoodPanel> foodPanels;
-    private int totalHeight = 0;
+    private int totalHeight;
 }

@@ -12,6 +12,7 @@ package imat;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -20,11 +21,14 @@ import se.chalmers.ait.dat215.project.Product;
 public class ShoppingListItemPanel extends javax.swing.JPanel {
 
     /** Creates new form ShoppingListItemPanel */
-    public ShoppingListItemPanel(Product p) {
+    public ShoppingListItemPanel(ShoppingItem p) {
         initComponents();
         
-        jLabel1.setIcon(IMatDataHandler.getInstance().getImageIcon(p, 40, 40));
-        jLabel2.setText(p.getName());
+        jLabel1.setIcon(IMatDataHandler.getInstance().getImageIcon(p.getProduct(), 40, 40));
+        jLabel2.setText(p.getProduct().getName());
+        jLabel3.setText(p.getProduct().getPrice() + " " + p.getProduct().getUnit());
+        jLabel4.setText(Integer.toString((int)p.getAmount()));
+        jLabel5.setText(Integer.toString((int)p.getTotal()));
     }
 
     /** This method is called from within the constructor to
@@ -49,7 +53,7 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
@@ -74,9 +78,9 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 62, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(18, 18, 18)
+                .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 89, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(36, 36, 36)
                 .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)

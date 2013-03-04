@@ -65,10 +65,10 @@ public class SearchPanel extends javax.swing.JPanel {
                     findProducts(textField.getText());
             
             for(Product product : productList) {
-                panel.setLayout(((productList.size()/3)+1), 3);
                 panel.addPanels(searchMap.get(product.getProductId()));
                 panel.reDraw();
             }
+            panel.setLayout(((productList.size()/3)+1), 3);
             panel.repaint();
             panel.revalidate();
         }
