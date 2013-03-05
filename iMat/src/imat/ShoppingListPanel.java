@@ -10,8 +10,10 @@
  */
 package imat;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 import se.chalmers.ait.dat215.project.*;
@@ -22,25 +24,26 @@ import se.chalmers.ait.dat215.project.*;
 public class ShoppingListPanel extends javax.swing.JPanel {
 
     /** Creates new form ShoppingListPanel */
-    public ShoppingListPanel(/*Order order*/) {
+    public ShoppingListPanel(ShoppingItemList sil) {
         initComponents();
         
-        jPanel2.setLayout(new GridLayout(3, 3));
-        for(int i = 0; i < 9; i++){
-            Product p = new Product();
-            p = IMatDataHandler.getInstance().getProduct(i+10);
-            ImageIcon icon = IMatDataHandler.getInstance().
-                    getImageIcon(p, 60, 60);
-            jPanel2.add(new JLabel(icon));
-        }
-    }
-    
-    public void setList(ArrayList<String> s){
-        //addWhatNot()
-    }
-    
-    public void addFoodImage(Icon icon){
+        jLabel1.setText(sil.getName());
         
+        List<ShoppingItem> tmp = sil.getProductList();
+        jPanel2.setLayout(new GridLayout(3, 3));
+        
+        for(int i = 0; i < sil.size(); i++){
+            System.out.println("added");
+            ImageIcon icon = IMatDataHandler.getInstance().
+                    getImageIcon(tmp.get(i).getProduct(), 65, 50);
+            jPanel2.add(new FoodImagePanel(icon));
+        }
+        
+        for(int n = 0; n < 9-sil.size(); n++){
+            jPanel2.add(new FoodImagePanel(null));
+        }
+        
+        this.setPreferredSize(new Dimension(175, 440));
     }
 
     /** This method is called from within the constructor to

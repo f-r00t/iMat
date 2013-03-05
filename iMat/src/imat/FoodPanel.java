@@ -23,11 +23,24 @@ import se.chalmers.ait.dat215.project.*;
 public class FoodPanel extends javax.swing.JPanel {
     
     private void addItemsToCart(int amount) {
-        IMatDataHandler.getInstance().getShoppingCart().addProduct(p, amount);
+        List<ShoppingItem> sList = IMatDataHandler.getInstance().getShoppingCart().getItems();
+        
+        double tmp = 0;
+            for(ShoppingItem s : sList){
+                if(s.getProduct() == p){
+                    tmp = s.getAmount();
+                    IMatDataHandler.getInstance().getShoppingCart().removeItem(s);
+                    IMatDataHandler.getInstance().getShoppingCart().addProduct(p, tmp+amount);
+                    return;
+                }
+            }
+            IMatDataHandler.getInstance().getShoppingCart().addProduct(p, amount);
     }
     /** Creates new form TestPanel */
     public FoodPanel(Product p, int width, int height) {
         initComponents();
+        
+        this.p = p;
         plusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
@@ -37,11 +50,11 @@ public class FoodPanel extends javax.swing.JPanel {
                 } catch (NumberFormatException ex) {
                     amount = 0;
                 }
-                addItemsToCart(amount);
+                if(amount != 0){
+                    addItemsToCart(amount);
+                }
             }
         });
-        
-        this.p = p;
         this.width = width;
         this.height = height;
         

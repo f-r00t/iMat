@@ -46,9 +46,8 @@ public class IMatView extends FrameView {
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
-        //istoryPanel = new SavedListsPanel("Historik", null);
+        //historyPanel = new SavedListsPanel("Historik", null);
         
-        //savedListsPanel = new SavedListsPanel("Sparade inköpslistor");
         favoritePanel  = new FoodMatrixPanel("Favoriter");
         IMatDataHandler.getInstance().getShoppingCart().
                 addShoppingCartListener(new CartListener());
@@ -58,6 +57,8 @@ public class IMatView extends FrameView {
         //Done for later use
         savedShoppingListItems = ListSaveLoad.getInstance().loadList();
         savedListsPanel = new SavedListsPanel("Sparade inköpslistor", savedShoppingListItems);
+        splashPanel.addSavedPurchases(savedShoppingListItems);
+        
     }
     
     private void changeToPreviousMainPanel() {

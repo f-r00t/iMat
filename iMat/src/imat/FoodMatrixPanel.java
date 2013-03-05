@@ -80,7 +80,7 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
     }
     
     public void setLayout(int row, int col){
-        jPanel2.setLayout(new GridLayout(row, col, 10, 10));
+        jPanel2.setLayout(new GridLayout(row, 3, 10, 10));
     }
     public void addPanels(FoodPanel p){
         p.revalidate();
@@ -90,8 +90,10 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
         if(foodPanels.size() % 3 == 0){
             totalHeight += 175;
         }
-        
-        this.setPreferredSize(new Dimension(550, totalHeight));
+        if(foodPanels.size() <= 4)
+            this.setPreferredSize(new Dimension(400, totalHeight));
+        else
+            this.setPreferredSize(new Dimension(550, totalHeight));
         foodPanels.add(p);
         reDraw();
     }
