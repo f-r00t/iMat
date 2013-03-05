@@ -46,6 +46,7 @@ public class IMatView extends FrameView {
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
+        //istoryPanel = new SavedListsPanel("Historik", null);
         
         //savedListsPanel = new SavedListsPanel("Sparade inköpslistor");
         favoritePanel  = new FoodMatrixPanel("Favoriter");
@@ -55,9 +56,8 @@ public class IMatView extends FrameView {
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
         
         //Done for later use
-        ListSaveLoad.getInstance();
         savedShoppingListItems = ListSaveLoad.getInstance().loadList();
-        historyPanel = new SavedListsPanel("Historik", savedShoppingListItems);
+        savedListsPanel = new SavedListsPanel("Sparade inköpslistor", savedShoppingListItems);
     }
     
     private void changeToPreviousMainPanel() {
@@ -404,13 +404,11 @@ private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_jButton1MouseMoved
 
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    setMainPanelto(historyPanel);
+    setMainPanelto(savedListsPanel);
 }//GEN-LAST:event_jButton4ActionPerformed
 
 private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     setMainPanelto(cartPanel);
-    System.out.println(savedShoppingListItems.size());
-    ListSaveLoad.getInstance().saveList(savedShoppingListItems);
 }//GEN-LAST:event_jButton5ActionPerformed
 
 private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -422,24 +420,13 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_jButton6ActionPerformed
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    setMainPanelto(savedListsPanel);
+    //setMainPanelto(historyPanel);
+    //Disabled for now
 }//GEN-LAST:event_jButton3ActionPerformed
 
 private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
     List<Product> favList = IMatDataHandler.getInstance().favorites();
-    
-    ////////////test///////////
-    ShoppingItemList sil = new ShoppingItemList();
-    for(Product p: favList){
         
-        ShoppingItem si = new ShoppingItem(p);
-        si.setAmount(Math.random()+1*10);
-        sil.add(si);
-    }
-    savedShoppingListItems.add(sil);
-    //ListSaveLoad.getInstance().saveList(savedShoppingListItems);
-    /////////////////////////
-    
     favoritePanel.removePanels();
     
     for(Product p: favList){

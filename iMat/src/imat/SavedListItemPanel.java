@@ -35,7 +35,7 @@ public class SavedListItemPanel extends javax.swing.JPanel {
         shoppingItemList = sil;
         jLabel2.setText(sil.getName());
         jLabel4.setText(Integer.toString(sil.getAmount()));
-        jLabel5.setText(Integer.toString(sil.getTotal()));
+        jLabel5.setText(Integer.toString(sil.getTotal()) + " kr");
     }
 
     /** This method is called from within the constructor to
@@ -53,6 +53,7 @@ public class SavedListItemPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setName("Form"); // NOI18N
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
