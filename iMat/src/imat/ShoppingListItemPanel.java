@@ -28,7 +28,7 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
         jLabel2.setText(p.getProduct().getName());
         jLabel3.setText(p.getProduct().getPrice() + " " + p.getProduct().getUnit());
         jLabel4.setText(Integer.toString((int)p.getAmount()));
-        jLabel5.setText(Integer.toString((int)p.getTotal()));
+        jLabel5.setText(Integer.toString((int)p.getTotal()) + " kr");
     }
 
     /** This method is called from within the constructor to
