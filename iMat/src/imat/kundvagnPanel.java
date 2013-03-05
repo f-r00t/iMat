@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInterface{
     
-     private List<ShoppingItem> cart;
+    private List<ShoppingItem> cart;
     private String title;
     /** Creates new form kundvagnPanel */ 
     public kundvagnPanel() {
@@ -31,12 +31,12 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
     
     public void updateCart(){
         jList1.setFixedCellHeight(70);
-        ShoppingItemList s = new ShoppingItemList();
-       cart = s.getProductList();
+        jList1.removeAll();
+        cart = IMatDataHandler.getInstance().getShoppingCart().getItems();
          
         productCell[] products = new productCell[cart.size()];
        
-        for(int i = 0; i< products.length;i++){
+        for(int i = 0; i < products.length; i++){
             ShoppingItem item = cart.get(i);
             Product p = item.getProduct();
             products[i] = new productCell(p.getName(), p.getPrice(),item.getAmount());
@@ -46,11 +46,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         
         jList1.setListData(products);
         jList1.setCellRenderer(new CellRenderer());
-        
-        
-            
-        
-    
+        revalidate();
     }
     /** This method is called from within the constructor to
      * initialize the form.
