@@ -27,10 +27,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
     /** Creates new form StartViewPanel */
     public SplashPanel() {
         initComponents();
-        
         addChosenProducts(null);
-        addLatestPurchases(null);
-        addSavedPurchases(null);
         
         title = "Startsida";
     }
@@ -44,23 +41,26 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         }
     }
     
-    private void addLatestPurchases(List<Order> products){
+    public void addSavedPurchases(List<ShoppingItemList> lists){
         
         jPanel16.setLayout(new GridLayout(5, 1, 0, 15));
         
-        for(int i = 0; i < 5 ; i++){
-            jPanel16.add(new ShoppingListPanel());
+        for(int i = 0; i < lists.size()-1; i++){
+            jPanel16.add(new ShoppingListPanel(lists.get(i)));
         }
+        
+        this.setPreferredSize(new Dimension(700, lists.size()*80 + 550));
     }
     
-    private void addSavedPurchases(List<Product> products){
+    /*
+    private void addLatestPurchases(ShoppingItemList lists){
         
         jPanel15.setLayout(new GridLayout(5, 1, 0, 15));
         
         for(int i = 0; i < 5; i++){
             jPanel15.add(new ShoppingListPanel());
         }
-    }
+    }*/
     
     public String getTitle(){
         return title;
@@ -95,7 +95,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jLabel2 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
 
         jPanel12.setName("jPanel12"); // NOI18N
@@ -158,10 +157,10 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 168, Short.MAX_VALUE)
+            .add(0, 161, Short.MAX_VALUE)
             .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(jPanel8Layout.createSequentialGroup()
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -205,7 +204,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 350, Short.MAX_VALUE)
+            .add(0, 376, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
@@ -221,7 +220,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 390, Short.MAX_VALUE)
+            .add(0, 416, Short.MAX_VALUE)
             .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
@@ -247,7 +246,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -264,11 +263,11 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 217, Short.MAX_VALUE)
+            .add(0, 218, Short.MAX_VALUE)
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 350, Short.MAX_VALUE)
+            .add(0, 376, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout jPanel11Layout = new org.jdesktop.layout.GroupLayout(jPanel11);
@@ -290,19 +289,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
 
         jPanel9.add(jPanel11, java.awt.BorderLayout.CENTER);
 
-        jPanel3.setName("jPanel3"); // NOI18N
-
-        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 28, Short.MAX_VALUE)
-        );
-
         jPanel14.setName("jPanel14"); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel14Layout = new org.jdesktop.layout.GroupLayout(jPanel14);
@@ -313,7 +299,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 653, Short.MAX_VALUE)
+            .add(0, 644, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -325,26 +311,24 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(layout.createSequentialGroup()
-                        .add(170, 170, 170)
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
                         .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 259, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 596, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .add(126, 126, 126))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
-                    .add(jPanel4, 0, 0, Short.MAX_VALUE)))
-            .add(jPanel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 183, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)))
+                    .add(jPanel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -359,7 +343,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

@@ -58,6 +58,8 @@ public class IMatView extends FrameView {
         //Done for later use
         savedShoppingListItems = ListSaveLoad.getInstance().loadList();
         savedListsPanel = new SavedListsPanel("Sparade inköpslistor", savedShoppingListItems);
+        splashPanel.addSavedPurchases(savedShoppingListItems);
+        
     }
     
     private void changeToPreviousMainPanel() {
