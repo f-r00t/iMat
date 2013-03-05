@@ -3,26 +3,55 @@
  * and open the template in the editor.
  */
 
+
 /*
  * kundvagnPanel.java
  *
  * Created on 2013-mar-01, 10:21:57
  */
 package imat;
+import se.chalmers.ait.dat215.project.*;
+import java.util.*;
 
 /**
  *
  * @author kimegenvall
  */
 public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInterface{
-
+    
+     private List<ShoppingItem> cart;
     private String title;
     /** Creates new form kundvagnPanel */
     public kundvagnPanel() {
         initComponents();
         title = "Kundvagn";
+        updateCart();
+        setVisible(true);
     }
-
+    
+    public void updateCart(){
+        jList1.setFixedCellHeight(70);
+        ShoppingItemList s = new ShoppingItemList();
+       cart = s.getProductList();
+         
+        productCell[] products = new productCell[cart.size()];
+       
+        for(int i = 0; i< products.length;i++){
+            ShoppingItem item = cart.get(i);
+            Product p = item.getProduct();
+            products[i] = new productCell(p.getName(), p.getPrice(),item.getAmount());
+            
+            
+        }
+        
+        jList1.setListData(products);
+        jList1.setCellRenderer(new CellRenderer());
+        
+        
+            
+        
+    
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -87,7 +116,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
                 .add(emptyCartBtn)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(betalaBtn)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
