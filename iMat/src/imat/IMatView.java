@@ -443,6 +443,9 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     setMainPanelto(favoritePanel);
     favoritePanel.repaint();
     favoritePanel.revalidate();
+    
+    //Added save here, should be executed when the program is exited***
+    ListSaveLoad.getInstance().saveList(savedShoppingListItems);
 }//GEN-LAST:event_jButton8ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

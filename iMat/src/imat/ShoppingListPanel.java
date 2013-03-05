@@ -33,7 +33,6 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         jPanel2.setLayout(new GridLayout(3, 3));
         
         for(int i = 0; i < sil.size(); i++){
-            System.out.println("added");
             ImageIcon icon = IMatDataHandler.getInstance().
                     getImageIcon(tmp.get(i).getProduct(), 65, 50);
             jPanel2.add(new FoodImagePanel(icon));

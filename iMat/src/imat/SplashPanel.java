@@ -43,13 +43,13 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
     
     public void addSavedPurchases(List<ShoppingItemList> lists){
         
-        jPanel16.setLayout(new GridLayout(5, 1, 0, 15));
+        jPanel16.setLayout(new GridLayout((lists.size()+1), 1, 0, 15));
         
         for(int i = 0; i < lists.size()-1; i++){
             jPanel16.add(new ShoppingListPanel(lists.get(i)));
         }
         
-        this.setPreferredSize(new Dimension(700, lists.size()*80 + 550));
+        this.setPreferredSize(new Dimension(700, lists.size()*135 + 550));
     }
     
     /*

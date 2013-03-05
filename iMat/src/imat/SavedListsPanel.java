@@ -12,6 +12,7 @@ package imat;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Product;
@@ -29,6 +30,7 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         initComponents();
         
         addTopItems(silList);
+        sList = new ArrayList<ShoppingListItemPanel>();
     }
 
     /** This method is called from within the constructor to
@@ -207,13 +209,22 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         this.title = s;
     }
     
+    public void update(){
+        addTopItems(IMatView.savedShoppingListItems);
+    }
+    
+    public void removeItem(ShoppingListItemPanel s){
+        sList.remove(s);
+    }
+    
     public void addTopItems(List<ShoppingItemList> silList){
         int height = 0;
         jPanel1.removeAll();
         jPanel1.setLayout(new GridLayout(silList.size(), 1));
         jPanel1.setPreferredSize(new Dimension(700,silList.size()*50));
         for(ShoppingItemList sil: silList){
-            jPanel1.add(new SavedListItemPanel(this,sil));
+            SavedListItemPanel listItem = new SavedListItemPanel(this, sil);
+            jPanel1.add(listItem);
         }
         
         this.revalidate();
@@ -223,7 +234,6 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
     public void addBottomItems(ShoppingItemList sil){
         int height;
         jPanel3.removeAll();
-        System.out.println(sil.size());
         jPanel3.setLayout(new GridLayout(6, 1, 3, 3));
         jPanel3.setPreferredSize(new Dimension(700,sil.size()*55));
         for(int i = 0; i < sil.size(); i++){
@@ -233,4 +243,6 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         this.revalidate();
         this.repaint();
     }
+    
+    private List<ShoppingListItemPanel> sList;
 }
