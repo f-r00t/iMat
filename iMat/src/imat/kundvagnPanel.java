@@ -21,7 +21,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
     
      private List<ShoppingItem> cart;
     private String title;
-    /** Creates new form kundvagnPanel */
+    /** Creates new form kundvagnPanel */ 
     public kundvagnPanel() {
         initComponents();
         title = "Kundvagn";

@@ -13,7 +13,7 @@ package imat;
 import javax.swing.ImageIcon;
 
 public class productCell {
-    private String name;
+    private  String name;
     private double price;
     private double amount;
     private ImageIcon image;

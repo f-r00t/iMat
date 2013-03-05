@@ -20,7 +20,7 @@ public class CellRenderer extends JLabel implements ListCellRenderer {
   }
 
   public Component getListCellRendererComponent(JList list, Object value,
-      int index, boolean isSelected, boolean cellHasFocus) {
+     int index, boolean isSelected, boolean cellHasFocus) {
       
     productCell prodcell = (productCell) value;
     setText(prodcell.getName() + prodcell.getAmount() + prodcell.getPrice());
