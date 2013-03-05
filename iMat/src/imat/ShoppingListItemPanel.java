@@ -83,6 +83,16 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -123,6 +133,21 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     IMatDataHandler.getInstance().getShoppingCart().removeItem(p);
     kvpOrigin.updateCart();
 }//GEN-LAST:event_jButton1ActionPerformed
+
+private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    
+    double newAmount = Double.parseDouble(jTextField1.getText());
+    p.setAmount(newAmount);
+    kvpOrigin.updateCart();
+    IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(p, true);
+}//GEN-LAST:event_jTextField1ActionPerformed
+
+private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+double newAmount = Double.parseDouble(jTextField1.getText());
+    p.setAmount(newAmount);
+    kvpOrigin.updateCart();
+    IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(p, true);
+}//GEN-LAST:event_jTextField1FocusLost
 
     public void updateFields(){
         jLabel1.setIcon(IMatDataHandler.getInstance().getImageIcon(p.getProduct(), 35, 35));
