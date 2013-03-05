@@ -104,6 +104,11 @@ public class IMatView extends FrameView {
     public static JPanel getMainPanel() {
         return jPanel4;
     }
+    
+    public static void saveShoppingLists(ShoppingItemList sil){
+        savedShoppingListItems.add(sil);
+        ListSaveLoad.getInstance().saveList(savedShoppingListItems);
+    }
     /**
      * private class responsible for updating texts when
      * changes are made to the shoppingCart.

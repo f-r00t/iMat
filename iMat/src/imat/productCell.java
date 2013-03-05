@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 public class productCell {
     private  String name;
     private double price;
-    private int amount;
+    private double amount;
     private ImageIcon image;
     
     // Getters
@@ -38,7 +38,7 @@ public class productCell {
         
     }
     
-    public productCell(String name, double price, int amount, ImageIcon image){
+    public productCell(String name, double price, double amount, ImageIcon image){
         this.name = name;
         this.price = price;
         this.amount = amount;
