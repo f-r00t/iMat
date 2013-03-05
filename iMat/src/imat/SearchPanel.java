@@ -72,21 +72,6 @@ public class SearchPanel extends javax.swing.JPanel {
             panel.repaint();
             panel.revalidate();
         }
-        
-        private void loadNewSearch2() {
-            if(!(IMatView.getMainPanel() instanceof FoodMatrixPanel)) {
-                IMatView.setMainPanelto(panel);
-            }
-            panel.removePanels();
-            List<Product> productList = IMatDataHandler.getInstance().
-                    findProducts(textField.getText());
-            
-            for(Product product : productList) {
-                panel.setLayout(((productList.size()/3)+1), 3);
-                panel.addPanels(new FoodPanel(product, FOODPANELSIZE, FOODPANELSIZE));  
-            }
-            panel.repaint();
-        }
 
         public void removeUpdate(DocumentEvent e) {           
             loadNewSearch();

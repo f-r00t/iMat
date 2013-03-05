@@ -114,14 +114,15 @@ public class IMatView extends FrameView {
      * changes are made to the shoppingCart.
      */
     private class CartListener implements ShoppingCartListener{
-
-        public void shoppingCartChanged(CartEvent ce) {
-            ShoppingCart cart =IMatDataHandler.getInstance().
-                    getShoppingCart();
+        private void setCartLabels(ShoppingCart cart) {
             jLabel2.setText(cart.getItems().size() + " varor");
             jLabel3.setText(cart.getTotal() + " kr");
         }
-        
+        public void shoppingCartChanged(CartEvent ce) {
+            ShoppingCart cart =IMatDataHandler.getInstance().
+                    getShoppingCart();
+            setCartLabels(cart);
+        }
     }
     
     public static void setTitle(String s){
@@ -141,7 +142,8 @@ public class IMatView extends FrameView {
         jButton4.setContentAreaFilled(false);
         jButton5.setBorder(BorderFactory.createEmptyBorder());
         jButton5.setContentAreaFilled(false);
-        
+        jButton8.setBorder(BorderFactory.createEmptyBorder());
+        jButton8.setContentAreaFilled(false);
     }
     @Action
     public void showAboutBox() {
@@ -171,8 +173,10 @@ public class IMatView extends FrameView {
         jButton3 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        latestPurchasePanel1 = new imat.LatestPurchasePanel();
+        jPanel7 = new javax.swing.JPanel();
         latestPurchasePanel2 = new imat.LatestPurchasePanel();
+        latestPurchasePanel1 = new imat.LatestPurchasePanel();
+        jPanel9 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -260,10 +264,21 @@ public class IMatView extends FrameView {
         jPanel1.add(jPanel6);
 
         jPanel3.setName("jPanel3"); // NOI18N
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
-        latestPurchasePanel1.setName("latestPurchasePanel1"); // NOI18N
+        jPanel7.setName("jPanel7"); // NOI18N
+        jPanel7.setVerifyInputWhenFocusTarget(false);
+        jPanel7.setLayout(new java.awt.BorderLayout());
 
         latestPurchasePanel2.setName("latestPurchasePanel2"); // NOI18N
+        jPanel7.add(latestPurchasePanel2, java.awt.BorderLayout.LINE_END);
+
+        latestPurchasePanel1.setName("latestPurchasePanel1"); // NOI18N
+        jPanel7.add(latestPurchasePanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel3.add(jPanel7, java.awt.BorderLayout.EAST);
+
+        jPanel9.setName("jPanel9"); // NOI18N
 
         jPanel2.setName("jPanel2"); // NOI18N
 
@@ -297,40 +312,30 @@ public class IMatView extends FrameView {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3))
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(219, 219, 219)
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(latestPurchasePanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(latestPurchasePanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(latestPurchasePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(latestPurchasePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
+
+        jPanel3.add(jPanel9, java.awt.BorderLayout.WEST);
 
         jPanel1.add(jPanel3);
 
@@ -382,7 +387,7 @@ public class IMatView extends FrameView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addComponent(jButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6))
         );
@@ -463,7 +468,9 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private static javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private imat.LatestPurchasePanel latestPurchasePanel1;
     private imat.LatestPurchasePanel latestPurchasePanel2;
