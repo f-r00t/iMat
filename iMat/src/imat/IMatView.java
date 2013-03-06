@@ -129,10 +129,12 @@ public class IMatView extends FrameView {
         }
         
         public void shoppingCartChanged(CartEvent ce) {
-            System.out.println(shoppingItems.size());
             ShoppingCart cart = IMatDataHandler.getInstance().
                     getShoppingCart();
             setCartLabels(cart);
+            if(ce.getShoppingItem() == null) {
+                return;
+            }
             for(Component panel : jPanel7.getComponents()) {
                 LatestPurchasePanel lPanel = ((LatestPurchasePanel)panel); 
                 if(lPanel.getItem().getProduct() == ce.getShoppingItem().getProduct()) {
