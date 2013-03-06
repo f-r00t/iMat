@@ -10,6 +10,7 @@
  */
 package imat;
 import se.chalmers.ait.dat215.project.*;
+import java.util.*;
 
 /**
  *
@@ -124,6 +125,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
@@ -131,6 +137,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jLabel1.setName("jLabel1"); // NOI18N
 
         jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
@@ -138,6 +149,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jLabel2.setName("jLabel2"); // NOI18N
 
         jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
@@ -145,6 +161,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jLabel4.setName("jLabel4"); // NOI18N
 
         jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
@@ -167,6 +188,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jLabel9.setName("jLabel9"); // NOI18N
 
         jTextField7.setName("jTextField7"); // NOI18N
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
 
         jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
         jLabel10.setName("jLabel10"); // NOI18N
@@ -190,6 +216,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jLabel13.setName("jLabel13"); // NOI18N
 
         jTextField8.setName("jTextField8"); // NOI18N
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText(resourceMap.getString("jLabel14.text")); // NOI18N
@@ -197,12 +228,22 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jLabel14.setName("jLabel14"); // NOI18N
 
         jTextField9.setName("jTextField9"); // NOI18N
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
 
         jLabel15.setText(resourceMap.getString("jLabel15.text")); // NOI18N
         jLabel15.setName("jLabel15"); // NOI18N
 
         jTextField10.setText(resourceMap.getString("jTextField10.text")); // NOI18N
         jTextField10.setName("jTextField10"); // NOI18N
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField10KeyTyped(evt);
+            }
+        });
 
         jButton1.setFont(resourceMap.getFont("jButton1.font")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
@@ -233,11 +274,6 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
 
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
         jButton3.setName("jButton3"); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
         jButton4.setName("jButton4"); // NOI18N
@@ -398,13 +434,23 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         return this.totalPrice;
     }
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    // Set input to customer info
+    
+    if (jTextField1 == null || jTextField2 == null || jTextField4 == null||
+        jTextField6 == null || jTextField9 == null || jTextField8 == null||
+        jTextField7 == null || jTextField10 == null|| jTextField10.getText().length() != 3 
+        || jTextField7.getText().length() != 16){
+            return;
+    }
     
     
     if(jCheckBox1.isSelected()){
         Customer c = IMatDataHandler.getInstance().getCustomer();
-        c.setFirstName(jTextField1.getText());
-        c.setLastName(jTextField4.getText());
+        
+        
+        c.setFirstName(firstLetterUpperCase(jTextField1.getText()));
+        c.setLastName(firstLetterUpperCase(jTextField4.getText()));
+        
+        
         c.setPostCode(jTextField6.getText());
         c.setPostAddress(jTextField9.getText());
         c.setMobilePhoneNumber(jTextField2.getText());
@@ -421,36 +467,87 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         cc.setValidYear(chosenYear);
         cc.setVerificationCode(Integer.parseInt(jTextField10.getText()));
     }
-    
-    // Check whether the radiobutton for homedelivery is checked
-    /*
-    if(jRadioButton1.isSelected()){
-        this.homeDeliverySelected = true;
-                
-    }
-    
-    else{
-        this.homeDeliverySelected = false;
-    }
-     * */
      
     
     // Proceed to receipt
     
-    kvitto = new kvittoPanel(jTextField1.getText()+" "+jTextField4.getText(), jTextField9.getText(),jTextField6.getText());
+    kvitto = new kvittoPanel(firstLetterUpperCase(jTextField1.getText())+" "+firstLetterUpperCase(jTextField4.getText()), jTextField9.getText(),jTextField6.getText());
     IMatView.setMainPanelto(kvitto);
     
 
 }//GEN-LAST:event_jButton4ActionPerformed
 
-
+public String firstLetterUpperCase(String s){
+    String tmp = s.substring(0, 1);
+    tmp = tmp.toUpperCase();
+    return tmp+s.substring(1,s.length());
+}
 public boolean isHomeDeliverySelected(){
+    // Useless not supported by backebd
     return this.homeDeliverySelected;
 }
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     kv = new kundvagnPanel();
     IMatView.setMainPanelto(kv);
 }//GEN-LAST:event_jButton3ActionPerformed
+
+private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+    char c = evt.getKeyChar();
+    if(c < '0' || c > '9'){
+        evt.consume();
+    }
+    
+    
+}//GEN-LAST:event_jTextField6KeyTyped
+
+private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+char c = evt.getKeyChar();
+    if(c < '0' || c > '9'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField2KeyTyped
+
+private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+char c = evt.getKeyChar();
+    if(c < '0' || c > '9'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField8KeyTyped
+
+private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+char c = evt.getKeyChar();
+    if(c < '0' || c > '9'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField7KeyTyped
+
+private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+char c = evt.getKeyChar();
+    if(c < '0' || c > '9'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField10KeyTyped
+
+private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+char c = evt.getKeyChar();
+    if(c < 'a' || c > 'z'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField1KeyTyped
+
+private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+char c = evt.getKeyChar();
+    if(c < 'a' || c > 'z'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField4KeyTyped
+
+private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+char c = evt.getKeyChar();
+    if(c < 'a' || c > 'z'){
+        evt.consume();
+    }
+}//GEN-LAST:event_jTextField9KeyTyped
 
 
 public String getTitle() {
