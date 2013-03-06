@@ -129,7 +129,7 @@ public class IMatView extends FrameView {
         }
         
         public void shoppingCartChanged(CartEvent ce) {
-                
+
             ShoppingCart cart = IMatDataHandler.getInstance().
                     getShoppingCart();
             setCartLabels(cart);
