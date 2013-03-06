@@ -193,9 +193,16 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="jButton5">
                           <Properties>
-                            <Property name="icon" type="javax.swing.Icon" resourceKey="jButton5.icon"/>
+                            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/imat/resources/shoppingCart.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="jButton5.text"/>
+                            <Property name="autoscrolls" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="jButton5" noResource="true"/>
+                            <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton5.pressedIcon"/>
+                            <Property name="rolloverIcon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="2" name="C:\programmering\iMat\iMat\src\imat\resources\shoppingCartHover.png"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
@@ -284,7 +291,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" pref="696" max="32767" attributes="0"/>
+                          <Component id="jLabel1" pref="760" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                       </Group>
