@@ -38,7 +38,7 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jLabel9.setText(address);
         jLabel10.setText(postnr);
         updateKvitto();
-        IMatDataHandler.getInstance().placeOrder();
+       // IMatDataHandler.getInstance().placeOrder();
     
         
     }
@@ -119,11 +119,9 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel2.setName("jPanel2"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(kvittoPanel.class);
-        jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
@@ -168,7 +166,7 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel8)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 311, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 319, Short.MAX_VALUE)
                         .add(jLabel1)
                         .add(18, 18, 18)
                         .add(jLabel2)
@@ -277,7 +275,7 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel6)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 270, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 285, Short.MAX_VALUE)
                 .add(jLabel11)
                 .add(65, 65, 65)
                 .add(jLabel12)
