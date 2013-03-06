@@ -283,7 +283,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="285" max="32767" attributes="0"/>
+                      <EmptySpace pref="341" max="32767" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
@@ -311,28 +311,22 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="jLabel11.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="jLabel11.text"/>
                 <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="jLabel12.font"/>
-                <Property name="text" type="java.lang.String" resourceKey="jLabel12.text"/>
                 <Property name="name" type="java.lang.String" value="jLabel12" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="jLabel13.font"/>
-                <Property name="text" type="java.lang.String" resourceKey="jLabel13.text"/>
                 <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="jLabel6.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="jLabel6.text"/>
                 <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
               </Properties>

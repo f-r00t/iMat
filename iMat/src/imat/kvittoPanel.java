@@ -333,8 +333,7 @@ JOptionPane.showMessageDialog(this,"Kvittot har mailats!");;
 }//GEN-LAST:event_jButton1ActionPerformed
 
 private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    SplashPanel sp = new SplashPanel();
-    IMatView.setMainPanelto(sp);
+    IMatView.setMainPanelto(IMatView.splashPanel);
 }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
