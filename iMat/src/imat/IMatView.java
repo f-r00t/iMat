@@ -63,7 +63,11 @@ public class IMatView extends FrameView {
         savedShoppingListItems = ListSaveLoad.getInstance().loadList();
         savedListsPanel = new SavedListsPanel("Sparade inköpslistor", savedShoppingListItems);
         splashPanel.addSavedPurchases(savedShoppingListItems);
-        
+        if(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()){
+            kundvagnPanel.betalaBtn.setEnabled(false);
+        }
+        savedListsPanel.updateShoppingList();
+        historyPanel.updateHistoryList();
     }
     public static List<Product> getShoppingItems() {
         return shoppingItems;
@@ -129,7 +133,11 @@ public class IMatView extends FrameView {
         }
         
         public void shoppingCartChanged(CartEvent ce) {
-
+            if(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()){
+                kundvagnPanel.betalaBtn.setEnabled(false);
+            }else{
+                kundvagnPanel.betalaBtn.setEnabled(true);
+            }
             ShoppingCart cart = IMatDataHandler.getInstance().
                     getShoppingCart();
             setCartLabels(cart);

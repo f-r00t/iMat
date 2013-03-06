@@ -274,12 +274,14 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_sparaInkopBtnActionPerformed
 
 private void betalaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betalaBtnActionPerformed
-    paymentform = new CreditCardForm();
-    IMatView.setMainPanelto(paymentform);
+    if(!(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty())){
+        paymentform = new CreditCardForm();
+        IMatView.setMainPanelto(paymentform);
+    }
 }//GEN-LAST:event_betalaBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton betalaBtn;
+    public static javax.swing.JButton betalaBtn;
     private javax.swing.JButton emptyCartBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -28,6 +28,7 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
         initComponents();
         this.p = p;
         
+        amount = p.getAmount();
         if(origin instanceof kundvagnPanel)
             this.kvpOrigin = (kundvagnPanel)origin;
         else{
@@ -153,13 +154,21 @@ private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_jTextField1KeyTyped
 
 private void updatePrice(){
-    double newAmount = Double.parseDouble(jTextField1.getText());
-    p.setAmount(newAmount);
-    kvpOrigin.updateCart();
+    try{
+        double newAmount = Double.parseDouble(jTextField1.getText());
+        p.setAmount(newAmount);
+        amount = newAmount;
+        kvpOrigin.updateCart();
+    }catch(NumberFormatException e){
+        amount = 1;
+        p.setAmount(amount);
+        kvpOrigin.updateCart();
+        
+    }
 }
 
     public void updateFields(){
-        jLabel1.setIcon(IMatDataHandler.getInstance().getImageIcon(p.getProduct(), 35, 35));
+        jLabel1.setIcon(IMatDataHandler.getInstance().getImageIcon(p.getProduct(), 50, 50));
         jLabel2.setText(p.getProduct().getName());
         jLabel3.setText(p.getProduct().getPrice() + " " + p.getProduct().getUnit());
         jTextField1.setText(Integer.toString((int)p.getAmount()));
@@ -177,4 +186,5 @@ private void updatePrice(){
     
     private ShoppingItem p;
     private kundvagnPanel kvpOrigin;
+    private double amount;
 }

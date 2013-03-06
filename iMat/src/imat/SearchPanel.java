@@ -127,8 +127,8 @@ public class SearchPanel extends javax.swing.JPanel {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(SearchPanel.class);
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setActionCommand(null);
         jTextField1.setName("jTextField1"); // NOI18N
-        jTextField1.setSelectionStart(0);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -217,14 +217,14 @@ public class SearchPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-            .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+            .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -51,8 +51,8 @@
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
+        <Property name="actionCommand" type="java.lang.String" value="null"/>
         <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
-        <Property name="selectionStart" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
@@ -73,14 +73,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jToggleButton3" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton4" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton5" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton6" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton7" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton8" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton1" alignment="0" pref="221" max="32767" attributes="0"/>
-              <Component id="jToggleButton2" alignment="0" pref="221" max="32767" attributes="0"/>
+              <Component id="jToggleButton3" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton4" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton5" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton6" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton7" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton8" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton1" alignment="0" pref="235" max="32767" attributes="0"/>
+              <Component id="jToggleButton2" alignment="0" pref="235" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

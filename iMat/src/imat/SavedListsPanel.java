@@ -13,6 +13,7 @@ package imat;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -157,9 +158,9 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
-                .add(45, 45, 45)
+                .add(63, 63, 63)
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(85, 85, 85)
+                .add(67, 67, 67)
                 .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(82, 82, 82)
                 .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 92, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -168,9 +169,9 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jLabel4)
                 .add(jLabel5)
-                .add(jLabel6))
+                .add(jLabel6)
+                .add(jLabel4))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -222,13 +223,18 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
     }
     
     public void updateShoppingList(){
-        addTopItems(IMatView.savedShoppingListItems);
+        List<ShoppingItemList> tmp = new ArrayList<ShoppingItemList>(IMatView.savedShoppingListItems);
+        Collections.reverse(tmp);
+        addTopItems(tmp);
         jPanel3.removeAll();
+        
     }
     
     public void updateHistoryList(){
         jPanel3.removeAll();
         List<Order> oList = IMatDataHandler.getInstance().getOrders();
+        Collections.reverse(oList);
+        
         List<ShoppingItemList> sList = new ArrayList<ShoppingItemList>();
         for(Order o : oList){
             ShoppingItemList sil = new ShoppingItemList();
