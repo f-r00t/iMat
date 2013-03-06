@@ -14,14 +14,14 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import se.chalmers.ait.dat215.project.*;
 import java.util.*;
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author kimegenvall
  */
 public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInterface{
-    
+    private CreditCardForm paymentform;
     private static List<ShoppingItem> cart;
     private static String title;
     /** Creates new form kundvagnPanel */ 
@@ -47,7 +47,6 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel1.setPreferredSize(new Dimension(500, height));
         revalidate();
         repaint();
-        jLabel4.setText("");
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -65,7 +64,6 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         sparaInkopBtn = new javax.swing.JButton();
         emptyCartBtn = new javax.swing.JButton();
         betalaBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -87,7 +85,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -115,27 +113,23 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
 
         betalaBtn.setText(resourceMap.getString("betalaBtn.text")); // NOI18N
         betalaBtn.setName("betalaBtn"); // NOI18N
-
-        jLabel4.setForeground(resourceMap.getColor("jLabel4.foreground")); // NOI18N
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
+        betalaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betalaBtnActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(sparaInkopBtn)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(emptyCartBtn)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(betalaBtn))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)))
-                .addContainerGap())
+                .add(sparaInkopBtn)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(emptyCartBtn)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(betalaBtn)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -145,9 +139,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
                     .add(sparaInkopBtn)
                     .add(emptyCartBtn)
                     .add(betalaBtn))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setName("jPanel3"); // NOI18N
@@ -196,7 +188,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(42, 42, 42))
+                .add(40, 40, 40))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -228,17 +220,17 @@ private void emptyCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_emptyCartBtnActionPerformed
 
 private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaInkopBtnActionPerformed
-    jLabel4.setText("");
     ShoppingItemList sil = new ShoppingItemList();
-    String s = JOptionPane.showInputDialog(null, "Spara som:");
-    if(s == null || s.length() == 0){
-        jLabel4.setText("Namnet måste innehålla minst ett tecken!");
-    }else{
-        sil.setName(s);
-        sil.setFromList(IMatDataHandler.getInstance().getShoppingCart().getItems());
-        IMatView.savedShoppingListItems.add(sil); 
-    }
+    sil.setName("nyLista1");
+    sil.setFromList(IMatDataHandler.getInstance().getShoppingCart().getItems());
+    
+    IMatView.saveShoppingLists(sil);
 }//GEN-LAST:event_sparaInkopBtnActionPerformed
+
+private void betalaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betalaBtnActionPerformed
+    paymentform = new CreditCardForm();
+    IMatView.setMainPanelto(paymentform);
+}//GEN-LAST:event_betalaBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton betalaBtn;
@@ -246,7 +238,6 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
