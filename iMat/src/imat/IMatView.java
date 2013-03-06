@@ -35,10 +35,10 @@ public class IMatView extends FrameView {
     private static JPanel currentMainPanel;
     private static List<JPanel> mainPanelHistory;
     private static int historyLocation;
-    private SplashPanel splashPanel;
+    public static SplashPanel splashPanel;
     private kundvagnPanel cartPanel;
-    private SavedListsPanel historyPanel;
-    private SavedListsPanel savedListsPanel;
+    public static SavedListsPanel historyPanel;
+    public static SavedListsPanel savedListsPanel;
     private FoodMatrixPanel favoritePanel;
     
     public IMatView(SingleFrameApplication app) {

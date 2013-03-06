@@ -26,15 +26,15 @@ public class FoodPanel extends javax.swing.JPanel {
         List<ShoppingItem> sList = IMatDataHandler.getInstance().getShoppingCart().getItems();
         
         double tmp = 0;
-            for(ShoppingItem s : sList){
-                if(s.getProduct() == p){
-                    tmp = s.getAmount();
-                    IMatDataHandler.getInstance().getShoppingCart().removeItem(s);
-                    IMatDataHandler.getInstance().getShoppingCart().addProduct(p, tmp+amount);
-                    return;
-                }
+        for(ShoppingItem s : sList){
+            if(s.getProduct() == p){
+                tmp = s.getAmount();
+                IMatDataHandler.getInstance().getShoppingCart().removeItem(s);
+                IMatDataHandler.getInstance().getShoppingCart().addProduct(p, tmp+amount);
+                return;
             }
-            IMatDataHandler.getInstance().getShoppingCart().addProduct(p, amount);
+        }
+        IMatDataHandler.getInstance().getShoppingCart().addProduct(p, amount);
     }
     /** Creates new form TestPanel */
     public FoodPanel(Product p, int width, int height) {

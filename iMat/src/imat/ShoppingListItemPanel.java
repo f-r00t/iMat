@@ -10,6 +10,8 @@
  */
 package imat;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -29,6 +31,9 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
         if(origin instanceof kundvagnPanel)
             this.kvpOrigin = (kundvagnPanel)origin;
         else{
+            jTextField1.setEditable(false);
+            jTextField1.setBackground(new Color(238,238,238));
+            jTextField1.setBorder(BorderFactory.createEmptyBorder());
             jButton1.setVisible(false);
             this.remove(jButton1);
             this.repaint();
@@ -82,6 +87,7 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -139,11 +145,9 @@ private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_jTextField1KeyTyped
 
 private void updatePrice(){
-    
     double newAmount = Double.parseDouble(jTextField1.getText());
     p.setAmount(newAmount);
     kvpOrigin.updateCart();
-    //IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(p, true);
 }
 
     public void updateFields(){
