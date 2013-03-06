@@ -10,27 +10,33 @@
  */
 package imat;
 
+import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
- * @author zapray
+ * @author Johan Gronvall
  */
 public class LatestPurchasePanel extends javax.swing.JPanel {
-
     /** Creates new form LatestPurchasePanel */
     public LatestPurchasePanel() {
         initComponents();
     }
-
+    public void updateTexts() {
+        Product product = item.getProduct();
+        jLabel4.setText(item.getTotal() + ":-");
+        jLabel2.setText(item.getAmount() + product.getUnitSuffix() + " " + product.getName());
+        jLabel3.setText(product.getPrice() + product.getUnit());
+    }
+    
     public LatestPurchasePanel(ShoppingItem item) {
         initComponents();
-        Product product = item.getProduct();
-        jLabel2.setText(product.getName());
-        jLabel3.setText("-:" + product.getPrice() + product.getUnit());
+        this.item = item;
+        this.updateTexts();
     }
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -43,6 +49,7 @@ public class LatestPurchasePanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
 
@@ -63,16 +70,22 @@ public class LatestPurchasePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(resourceMap.getFont("jLabel4.font")); // NOI18N
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
         layout.setVerticalGroup(
@@ -80,11 +93,15 @@ public class LatestPurchasePanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel2)
                 .addComponent(jLabel3)
-                .addComponent(jButton1))
+                .addComponent(jButton1)
+                .addComponent(jLabel4))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+    IMatDataHandler.getInstance().getShoppingCart().removeItem(item);
+    IMatView.getShoppingItems().remove(item.getProduct());
     this.getParent().remove(this);
 }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -92,5 +109,15 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+    private ShoppingItem item;
+
+    public ShoppingItem getItem() {
+        return item;
+    }
+    public void setItem(ShoppingItem item) {
+        this.item = item;
+    }
 }
+

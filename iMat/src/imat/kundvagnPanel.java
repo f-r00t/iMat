@@ -16,12 +16,13 @@ import se.chalmers.ait.dat215.project.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author kimegenvall
  */
 public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInterface{
-    
+    private CreditCardForm paymentform;
     private static List<ShoppingItem> cart;
     private static String title;
     /** Creates new form kundvagnPanel */ 
@@ -90,7 +91,9 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+
             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -118,10 +121,11 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
 
         betalaBtn.setText(resourceMap.getString("betalaBtn.text")); // NOI18N
         betalaBtn.setName("betalaBtn"); // NOI18N
-
-        jLabel4.setForeground(resourceMap.getColor("jLabel4.foreground")); // NOI18N
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
+        betalaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betalaBtnActionPerformed(evt);
+            }
+        });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
@@ -137,6 +141,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
+
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(20, 20, 20)
@@ -250,7 +255,6 @@ private void emptyCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_emptyCartBtnActionPerformed
 
 private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaInkopBtnActionPerformed
-    jLabel4.setText("");
     ShoppingItemList sil = new ShoppingItemList();
     String s = JOptionPane.showInputDialog(null, "Spara som:");
     if(s == null || s.length() == 0){
@@ -262,7 +266,13 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         IMatView.savedListsPanel.updateShoppingList();
         IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
     }
+
 }//GEN-LAST:event_sparaInkopBtnActionPerformed
+
+private void betalaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betalaBtnActionPerformed
+    paymentform = new CreditCardForm();
+    IMatView.setMainPanelto(paymentform);
+}//GEN-LAST:event_betalaBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton betalaBtn;

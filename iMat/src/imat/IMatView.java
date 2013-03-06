@@ -40,6 +40,7 @@ public class IMatView extends FrameView {
     public static SavedListsPanel historyPanel;
     public static SavedListsPanel savedListsPanel;
     private FoodMatrixPanel favoritePanel;
+    private static List<Product> shoppingItems;
     
     public IMatView(SingleFrameApplication app) {
         super(app);
@@ -49,6 +50,7 @@ public class IMatView extends FrameView {
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
+        shoppingItems = new ArrayList<Product>();
         historyPanel = new SavedListsPanel("Tidigare inköp", null);
         
         favoritePanel  = new FoodMatrixPanel("Favoriter");
@@ -62,6 +64,9 @@ public class IMatView extends FrameView {
         savedListsPanel = new SavedListsPanel("Sparade inköpslistor", savedShoppingListItems);
         splashPanel.addSavedPurchases(savedShoppingListItems);
         
+    }
+    public static List<Product> getShoppingItems() {
+        return shoppingItems;
     }
     
     private void changeToPreviousMainPanel() {
@@ -124,24 +129,50 @@ public class IMatView extends FrameView {
         }
         
         public void shoppingCartChanged(CartEvent ce) {
-            ShoppingCart cart =IMatDataHandler.getInstance().
+                
+            ShoppingCart cart = IMatDataHandler.getInstance().
                     getShoppingCart();
             setCartLabels(cart);
-            
-            if(ce.isAddEvent()) {
-                LatestPurchasePanel lpp = new LatestPurchasePanel(ce.getShoppingItem());
-                if(jPanel7.getComponentCount() < 1) {
-                    jPanel7.add(lpp, BorderLayout.NORTH);
-                } else if(jPanel7.getComponentCount() > 1) {
-                    jPanel7.remove(0);
-                    Component comp = jPanel7.getComponent(0);
-                    jPanel7.remove(0);
-                    jPanel7.add(comp, BorderLayout.NORTH);
-                    jPanel7.add(lpp, BorderLayout.SOUTH);
-                } else {
-                    jPanel7.add(lpp, BorderLayout.SOUTH);
+            if(ce.getShoppingItem() == null) {
+                return;
+            }
+            for(Component panel : jPanel7.getComponents()) {
+                LatestPurchasePanel lPanel = ((LatestPurchasePanel)panel); 
+                if(lPanel.getItem().getProduct() == ce.getShoppingItem().getProduct()) {
+                    lPanel.setItem(ce.getShoppingItem());
+                    lPanel.updateTexts();
                 }
             }
+            if(ce.isAddEvent()) {
+                boolean itemAlreadyInList = false;
+                for(Product item : shoppingItems) {
+                    itemAlreadyInList |= item.equals(ce.getShoppingItem().getProduct());
+                }
+                
+                if(!itemAlreadyInList || shoppingItems.isEmpty()) {
+                    LatestPurchasePanel lpp = new LatestPurchasePanel(ce.getShoppingItem());
+                    if(jPanel7.getComponentCount() < 1) {
+                        addPurchasePanel(lpp, BorderLayout.NORTH);
+                    } else if(jPanel7.getComponentCount() > 1) {
+                        shoppingItems.remove(0);
+                        jPanel7.remove(0);
+                        jPanel7.revalidate();
+                        jPanel7.repaint();
+                        Component comp = jPanel7.getComponent(0);
+                        jPanel7.remove(0);
+                        jPanel7.add(comp, BorderLayout.NORTH);
+                        this.addPurchasePanel(lpp, BorderLayout.SOUTH);
+                    } else {
+                        this.addPurchasePanel(lpp, BorderLayout.SOUTH);
+                    }
+                }
+            }
+            jPanel7.revalidate();
+            jPanel7.repaint();
+        }
+        private void addPurchasePanel(LatestPurchasePanel lpp, String layout) {
+            jPanel7.add(lpp, layout);
+            shoppingItems.add(lpp.getItem().getProduct());
         }
     }
     
