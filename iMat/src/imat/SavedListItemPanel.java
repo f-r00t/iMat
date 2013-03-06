@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -52,6 +53,7 @@ public class SavedListItemPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setName("Form"); // NOI18N
@@ -85,6 +87,14 @@ public class SavedListItemPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+        jButton3.setName("jButton3"); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,20 +105,28 @@ public class SavedListItemPanel extends javax.swing.JPanel {
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(45, 45, 45)
                 .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(115, 115, 115)
-                .add(jButton2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 185, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jButton3)
+                    .add(layout.createSequentialGroup()
+                        .add(jButton2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton1)))
+                .add(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                 .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .add(jButton1)
-                .add(jButton2)
                 .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(jButton3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton1)
+                    .add(jButton2))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,9 +140,36 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     jp.updateShoppingList();
 }//GEN-LAST:event_jButton1ActionPerformed
 
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    List<ShoppingItem> siList = IMatDataHandler.getInstance().getShoppingCart().getItems();
+    List<ShoppingItem> sListTmp  = new ArrayList<ShoppingItem>(shoppingItemList.getProductList());
+    List<ShoppingItem> sListTmp2  = new ArrayList<ShoppingItem>(shoppingItemList.getProductList());
+    
+    double tmp = 0;
+    double amount = 0;
+    for(ShoppingItem si : sListTmp){
+        tmp = si.getAmount();
+        for(ShoppingItem s : siList){
+            amount = s.getAmount();
+            if(s.getProduct() == si.getProduct()){
+                IMatDataHandler.getInstance().getShoppingCart().removeItem(s);
+                IMatDataHandler.getInstance().getShoppingCart().addProduct(s.getProduct(), tmp+amount);
+                sListTmp2.remove(si);
+                break;
+            }
+        }        
+    }
+    
+    for(ShoppingItem s : sListTmp2){
+        amount = s.getAmount();
+        IMatDataHandler.getInstance().getShoppingCart().addProduct(s.getProduct(), amount);
+    }
+}//GEN-LAST:event_jButton3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

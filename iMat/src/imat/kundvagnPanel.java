@@ -16,12 +16,13 @@ import se.chalmers.ait.dat215.project.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author kimegenvall
  */
 public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInterface{
-    
+    private CreditCardForm paymentform;
     private static List<ShoppingItem> cart;
     private static String title;
     /** Creates new form kundvagnPanel */ 
@@ -48,6 +49,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         revalidate();
         repaint();
         jLabel4.setText("");
+        jLabel5.setText(Double.toString(IMatDataHandler.getInstance().getShoppingCart().getTotal())+ " kr");
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -66,6 +68,8 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         emptyCartBtn = new javax.swing.JButton();
         betalaBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -87,7 +91,9 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -115,26 +121,41 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
 
         betalaBtn.setText(resourceMap.getString("betalaBtn.text")); // NOI18N
         betalaBtn.setName("betalaBtn"); // NOI18N
+        betalaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betalaBtnActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setForeground(resourceMap.getColor("jLabel4.foreground")); // NOI18N
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        jLabel6.setFont(resourceMap.getFont("jLabel6.font")); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
+
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(20, 20, 20)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(sparaInkopBtn)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(emptyCartBtn)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(betalaBtn))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)))
+                        .add(betalaBtn)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 149, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 69, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -144,7 +165,9 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(sparaInkopBtn)
                     .add(emptyCartBtn)
-                    .add(betalaBtn))
+                    .add(betalaBtn)
+                    .add(jLabel6)
+                    .add(jLabel5))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                 .addContainerGap())
@@ -154,15 +177,19 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
 
         jPanel5.setName("jPanel5"); // NOI18N
 
+        jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
+        jLabel2.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
+        jLabel3.setFont(resourceMap.getFont("jLabel3.font")); // NOI18N
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
+        jLabel7.setFont(resourceMap.getFont("jLabel7.font")); // NOI18N
         jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
         jLabel7.setName("jLabel7"); // NOI18N
 
@@ -175,19 +202,19 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
                 .add(jLabel1)
                 .add(79, 79, 79)
                 .add(jLabel2)
-                .add(87, 87, 87)
+                .add(75, 75, 75)
                 .add(jLabel3)
-                .add(51, 51, 51)
+                .add(55, 55, 55)
                 .add(jLabel7)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                 .add(jLabel2)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(jLabel3)
-                .add(jLabel7)
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jLabel7))
         );
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
@@ -196,7 +223,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(42, 42, 42))
+                .add(44, 44, 44))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -228,7 +255,6 @@ private void emptyCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_emptyCartBtnActionPerformed
 
 private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaInkopBtnActionPerformed
-    jLabel4.setText("");
     ShoppingItemList sil = new ShoppingItemList();
     String s = JOptionPane.showInputDialog(null, "Spara som:");
     if(s == null || s.length() == 0){
@@ -236,9 +262,17 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     }else{
         sil.setName(s);
         sil.setFromList(IMatDataHandler.getInstance().getShoppingCart().getItems());
-        IMatView.savedShoppingListItems.add(sil); 
+        IMatView.savedShoppingListItems.add(sil);
+        IMatView.savedListsPanel.updateShoppingList();
+        IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
     }
+
 }//GEN-LAST:event_sparaInkopBtnActionPerformed
+
+private void betalaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betalaBtnActionPerformed
+    paymentform = new CreditCardForm();
+    IMatView.setMainPanelto(paymentform);
+}//GEN-LAST:event_betalaBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton betalaBtn;
@@ -247,6 +281,8 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

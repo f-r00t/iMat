@@ -23,18 +23,20 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class ShoppingListPanel extends javax.swing.JPanel {
 
+    private List<ShoppingItem> sList;
+    
     /** Creates new form ShoppingListPanel */
     public ShoppingListPanel(ShoppingItemList sil) {
         initComponents();
         
         jLabel1.setText(sil.getName());
-        
+        sList = sil.getProductList();
         List<ShoppingItem> tmp = sil.getProductList();
         jPanel2.setLayout(new GridLayout(3, 3));
         
         for(int i = 0; i < sil.size(); i++){
             ImageIcon icon = IMatDataHandler.getInstance().
-                    getImageIcon(tmp.get(i).getProduct(), 65, 50);
+                    getImageIcon(tmp.get(i).getProduct(), 60, 53);
             jPanel2.add(new FoodImagePanel(icon));
         }
         
@@ -42,19 +44,19 @@ public class ShoppingListPanel extends javax.swing.JPanel {
             jPanel2.add(new FoodImagePanel(null));
         }
         
-        this.setPreferredSize(new Dimension(175, 440));
+        //this.setPreferredSize(new Dimension(175, 500));
     }
     
     public ShoppingListPanel(Order o) {
         initComponents();
-        
+        sList = o.getItems();
         jLabel1.setText(o.getDate().toString());
+        jPanel2.setLayout(new GridLayout(3,3));
+        List<ShoppingItem> siList = o.getItems();
         
-        List<ShoppingItem> sList = o.getItems();
-        
-        for(ShoppingItem s : sList){
+        for(ShoppingItem s : siList){
             ImageIcon icon = IMatDataHandler.getInstance().
-                    getImageIcon(s.getProduct(), 65, 50);
+                    getImageIcon(s.getProduct(), 60, 53);
             jPanel2.add(new FoodImagePanel(null));
         }
         
@@ -69,7 +71,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
             jPanel2.add(new FoodImagePanel(null));
         }*/
         
-        this.setPreferredSize(new Dimension(175, 440));
+        this.setPreferredSize(new Dimension(175, 500));
     }
 
     /** This method is called from within the constructor to
@@ -84,6 +86,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -111,9 +114,13 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(6, 3));
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        jScrollPane1.setViewportView(jPanel2);
+
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(20, 24));
@@ -121,10 +128,42 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, java.awt.BorderLayout.EAST);
 
         add(jPanel3, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
+
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    List<ShoppingItem> siList = IMatDataHandler.getInstance().getShoppingCart().getItems();
+    List<ShoppingItem> sListTmp  = new ArrayList<ShoppingItem>(sList);
+    List<ShoppingItem> sListTmp2  = new ArrayList<ShoppingItem>(sList);
+    
+    double tmp = 0;
+    double amount = 0;
+    for(ShoppingItem si : sListTmp){
+        tmp = si.getAmount();
+        for(ShoppingItem s : siList){
+            amount = s.getAmount();
+            if(s.getProduct() == si.getProduct()){
+                IMatDataHandler.getInstance().getShoppingCart().removeItem(s);
+                IMatDataHandler.getInstance().getShoppingCart().addProduct(s.getProduct(), tmp+amount);
+                sListTmp2.remove(si);
+                break;
+            }
+        }        
+    }
+    
+    for(ShoppingItem s : sListTmp2){
+        amount = s.getAmount();
+        IMatDataHandler.getInstance().getShoppingCart().addProduct(s.getProduct(), amount);
+    }
+}//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -132,5 +171,6 @@ public class ShoppingListPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

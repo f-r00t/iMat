@@ -15,11 +15,41 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author Harry
  */
-public class CreditCardForm extends javax.swing.JPanel {
-
+public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInterface {
+    private kundvagnPanel kv;
+    private double totalPrice;
+    private ShoppingCart cart;
+    private kvittoPanel kvitto;
+    private static String title;
+    private boolean homeDeliverySelected;
+    private Customer c = IMatDataHandler.getInstance().getCustomer();
+    private CreditCard cc = IMatDataHandler.getInstance().getCreditCard();
     /** Creates new form CreditCardForm */
     public CreditCardForm() {
         initComponents();
+        title = "Betala";
+        initFields();
+        
+        
+        
+    }
+    
+    private void initFields(){
+        // Automatic input from saved Customer
+        jTextField1.setText(c.getFirstName());
+        jTextField4.setText(c.getLastName());
+        jTextField6.setText(c.getPostCode());
+        jTextField9.setText(c.getPostAddress());
+        jTextField2.setText(c.getMobilePhoneNumber());
+        jTextField8.setText(c.getPhoneNumber());
+        
+        jComboBox1.setSelectedItem(cc.getCardType());
+        jTextField7.setText(cc.getCardNumber());
+        jComboBox2.setSelectedItem(cc.getValidMonth());
+        jComboBox4.setSelectedItem(cc.getValidYear());
+        jTextField10.setText(""+cc.getVerificationCode());
+      
+        
     }
 
     /** This method is called from within the constructor to
@@ -203,9 +233,19 @@ public class CreditCardForm extends javax.swing.JPanel {
 
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
         jButton3.setName("jButton3"); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
         jButton4.setName("jButton4"); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -353,12 +393,73 @@ public class CreditCardForm extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-   // Customer c = Customer.getInstance();
-    //Customer.getInstance().setFirstName(jTextField1.getText());
     
-}//GEN-LAST:event_jTextField1ActionPerformed
+    public double getTotalPrice(){
+        return this.totalPrice;
+    }
+private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    // Set input to customer info
+    
+    
+    if(jCheckBox1.isSelected()){
+        Customer c = IMatDataHandler.getInstance().getCustomer();
+        c.setFirstName(jTextField1.getText());
+        c.setLastName(jTextField4.getText());
+        c.setPostCode(jTextField6.getText());
+        c.setPostAddress(jTextField9.getText());
+        c.setMobilePhoneNumber(jTextField2.getText());
+        c.setPhoneNumber(jTextField8.getText());
+    }
+    // Set input to credit card info
+    if(jCheckBox2.isSelected()){
+        
+        cc.setCardType(jComboBox1.getSelectedItem().toString());
+        cc.setCardNumber(jTextField7.getText());
+        Integer chosenMonth = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+        cc.setValidMonth(chosenMonth); 
+        Integer chosenYear = Integer.parseInt(jComboBox4.getSelectedItem().toString());
+        cc.setValidYear(chosenYear);
+        cc.setVerificationCode(Integer.parseInt(jTextField10.getText()));
+    }
+    
+    // Check whether the radiobutton for homedelivery is checked
+    /*
+    if(jRadioButton1.isSelected()){
+        this.homeDeliverySelected = true;
+                
+    }
+    
+    else{
+        this.homeDeliverySelected = false;
+    }
+     * */
+     
+    
+    // Proceed to receipt
+    
+    kvitto = new kvittoPanel(jTextField1.getText()+" "+jTextField4.getText(), jTextField9.getText(),jTextField6.getText());
+    IMatView.setMainPanelto(kvitto);
+    
 
+}//GEN-LAST:event_jButton4ActionPerformed
+
+
+public boolean isHomeDeliverySelected(){
+    return this.homeDeliverySelected;
+}
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    kv = new kundvagnPanel();
+    IMatView.setMainPanelto(kv);
+}//GEN-LAST:event_jButton3ActionPerformed
+
+
+public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String s) {
+        ;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
