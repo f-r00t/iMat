@@ -87,14 +87,21 @@ public class FoodMatrixPanel extends javax.swing.JPanel implements TitleLabelInt
         jPanel2.add(p);
         this.repaint();
         
+        foodPanels.add(p);
+        
         if(foodPanels.size() % 3 == 0){
             totalHeight += 175;
         }
-        if(foodPanels.size() <= 4)
+        
+        if(foodPanels.size() == 1){
+            this.setPreferredSize(new Dimension(200, totalHeight));
+            setLayout(2, 3);
+        }else if(foodPanels.size() <= 4 && foodPanels.size() > 1){
             this.setPreferredSize(new Dimension(400, totalHeight));
-        else
+        }else{
             this.setPreferredSize(new Dimension(550, totalHeight));
-        foodPanels.add(p);
+        }
+        
         reDraw();
     }
 

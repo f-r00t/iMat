@@ -26,11 +26,12 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
         initComponents();
         this.p = p;
         
-        if(origin.getClass() == kundvagnPanel.class)
+        if(origin instanceof kundvagnPanel)
             this.kvpOrigin = (kundvagnPanel)origin;
         else{
             jButton1.setVisible(false);
             this.remove(jButton1);
+            this.repaint();
         }
         
         updateFields();
@@ -83,14 +84,9 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
             }
         });
 
@@ -134,20 +130,21 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     kvpOrigin.updateCart();
 }//GEN-LAST:event_jButton1ActionPerformed
 
-private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    char c = evt.getKeyChar();
+    if(c < '0' || c > '9'){
+        evt.consume();
+    }
+    updatePrice();
+}//GEN-LAST:event_jTextField1KeyTyped
+
+private void updatePrice(){
     
     double newAmount = Double.parseDouble(jTextField1.getText());
     p.setAmount(newAmount);
     kvpOrigin.updateCart();
-    IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(p, true);
-}//GEN-LAST:event_jTextField1ActionPerformed
-
-private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-double newAmount = Double.parseDouble(jTextField1.getText());
-    p.setAmount(newAmount);
-    kvpOrigin.updateCart();
-    IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(p, true);
-}//GEN-LAST:event_jTextField1FocusLost
+    //IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(p, true);
+}
 
     public void updateFields(){
         jLabel1.setIcon(IMatDataHandler.getInstance().getImageIcon(p.getProduct(), 35, 35));

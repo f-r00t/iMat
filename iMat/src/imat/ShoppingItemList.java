@@ -7,6 +7,7 @@ package imat;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -19,7 +20,11 @@ public class ShoppingItemList implements Serializable{
     private String name;
         
     public ShoppingItemList(){
-        shoppingList = new ArrayList<ShoppingItem>();
+            shoppingList = new ArrayList<ShoppingItem>();
+    }
+    
+    public void setFromOrder(Order o){
+        shoppingList = o.getItems();
     }
     
     public void addProduct(ShoppingItem p){
