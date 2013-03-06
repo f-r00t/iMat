@@ -31,6 +31,8 @@ public class ListSaveLoad {
 
     public void saveList(List<ShoppingItemList> pl){
         
+        File f = new File("savefile.txt");
+        f.delete();
         if(pl.size() == 0 || pl == null){
             return;
         }
@@ -43,7 +45,6 @@ public class ListSaveLoad {
               try{
                 for(ShoppingItemList sil : pList){
                      output.writeObject(sil);
-                     System.out.println("SAVED!");
                 }
              }catch(EOFException e){}
              try{

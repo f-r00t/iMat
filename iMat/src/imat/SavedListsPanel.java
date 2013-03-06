@@ -15,6 +15,8 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -29,7 +31,10 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
     public SavedListsPanel(String title, List<ShoppingItemList> silList) {
         initComponents();
         
-        addTopItems(silList);
+        if(silList != null)
+            addTopItems(silList);
+        
+        this.title = title;
         sList = new ArrayList<ShoppingListItemPanel>();
     }
 
@@ -209,8 +214,22 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         this.title = s;
     }
     
-    public void update(){
+    public void updateShoppingList(){
         addTopItems(IMatView.savedShoppingListItems);
+        jPanel3.removeAll();
+    }
+    
+    public void updateHistoryList(){
+        jPanel3.removeAll();
+        List<Order> oList = IMatDataHandler.getInstance().getOrders();
+        List<ShoppingItemList> sList = new ArrayList<ShoppingItemList>();
+        for(Order o : oList){
+            ShoppingItemList sil = new ShoppingItemList();
+            sil.setFromOrder(o);
+            sList.add(sil);
+        }
+        
+        addTopItems(sList);
     }
     
     public void removeItem(ShoppingListItemPanel s){
@@ -220,7 +239,11 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
     public void addTopItems(List<ShoppingItemList> silList){
         int height = 0;
         jPanel1.removeAll();
-        jPanel1.setLayout(new GridLayout(silList.size(), 1));
+        if(silList.size() <= 3){
+            jPanel1.setLayout(new GridLayout(3, 1));
+        }else{
+            jPanel1.setLayout(new GridLayout(silList.size(), 1));
+        }
         jPanel1.setPreferredSize(new Dimension(700,silList.size()*50));
         for(ShoppingItemList sil: silList){
             SavedListItemPanel listItem = new SavedListItemPanel(this, sil);

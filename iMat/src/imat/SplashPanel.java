@@ -23,13 +23,16 @@ import se.chalmers.ait.dat215.project.*;
 public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterface{
 
     private String title;
+    private Dimension d;
     
     /** Creates new form StartViewPanel */
     public SplashPanel() {
         initComponents();
         addChosenProducts(null);
+        addLatestPurchases();
         
         title = "Startsida";
+        d = new Dimension(0, 0);
     }
     
     private void addChosenProducts(List<Product> products){
@@ -45,22 +48,34 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         
         jPanel16.setLayout(new GridLayout((lists.size()+1), 1, 0, 15));
         
-        for(int i = 0; i < lists.size()-1; i++){
+        for(int i = 0; i < lists.size(); i++){
             jPanel16.add(new ShoppingListPanel(lists.get(i)));
         }
         
-        this.setPreferredSize(new Dimension(700, lists.size()*135 + 550));
+        d = new Dimension(700, lists.size()*135 + 550);
+        this.setPreferredSize(d);
     }
     
-    /*
-    private void addLatestPurchases(ShoppingItemList lists){
+    
+    private void addLatestPurchases(){
+        List<Order> oList = IMatDataHandler.getInstance().getOrders();
         
-        jPanel15.setLayout(new GridLayout(5, 1, 0, 15));
+        jPanel15.setLayout(new GridLayout(oList.size(), 1, 0, 15));
         
-        for(int i = 0; i < 5; i++){
-            jPanel15.add(new ShoppingListPanel());
+        for(Order o : oList){
+            jPanel15.add(new ShoppingListPanel(o));
         }
-    }*/
+        
+        Dimension dTmp = new Dimension(700, oList.size()*135 + 550);
+        try{
+            if(dTmp.height > d.height){
+                d = dTmp;
+                this.setPreferredSize(dTmp);
+            }
+        }catch(NullPointerException e){
+            this.setPreferredSize(d);
+        }
+    }
     
     public String getTitle(){
         return title;

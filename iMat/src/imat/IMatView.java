@@ -40,13 +40,13 @@ public class IMatView extends FrameView {
     
     public IMatView(SingleFrameApplication app) {
         super(app);
-
+        
         initComponents();
         manuallyInitComponents();
         mainPanelHistory = new ArrayList<JPanel>();
         splashPanel = new SplashPanel();
         cartPanel = new kundvagnPanel();
-        //historyPanel = new SavedListsPanel("Historik", null);
+        historyPanel = new SavedListsPanel("Tidigare inköp", null);
         
         favoritePanel  = new FoodMatrixPanel("Favoriter");
         IMatDataHandler.getInstance().getShoppingCart().
@@ -99,14 +99,15 @@ public class IMatView extends FrameView {
             panel.revalidate();
         }
         
-    }//TODO rename, this isnt the mainpanel,
+    }
+    //TODO rename, this isnt the mainpanel,
     //it is the panel holding the main panel
     public static JPanel getMainPanel() {
         return jPanel4;
     }
     
-    public static void saveShoppingLists(ShoppingItemList sil){
-        savedShoppingListItems.add(sil);
+    public static void saveShoppingLists(){
+        System.out.println(IMatView.savedShoppingListItems.size());
         ListSaveLoad.getInstance().saveList(savedShoppingListItems);
     }
     /**
@@ -432,8 +433,8 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_jButton6ActionPerformed
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    //setMainPanelto(historyPanel);
-    //Disabled for now
+    historyPanel.updateHistoryList();
+    setMainPanelto(historyPanel);
 }//GEN-LAST:event_jButton3ActionPerformed
 
 private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -450,7 +451,7 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     favoritePanel.revalidate();
     
     //Added save here, should be executed when the program is exited***
-    ListSaveLoad.getInstance().saveList(savedShoppingListItems);
+    saveShoppingLists();
 }//GEN-LAST:event_jButton8ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
