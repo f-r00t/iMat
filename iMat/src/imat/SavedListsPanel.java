@@ -251,7 +251,7 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         }else{
             jPanel1.setLayout(new GridLayout(silList.size(), 1));
         }
-        jPanel1.setPreferredSize(new Dimension(700,silList.size()*50));
+        jPanel1.setPreferredSize(new Dimension(700,silList.size()*65));
         for(ShoppingItemList sil: silList){
             SavedListItemPanel listItem = new SavedListItemPanel(this, sil);
             jPanel1.add(listItem);

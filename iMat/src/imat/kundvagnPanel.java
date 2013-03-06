@@ -10,6 +10,7 @@
  * Created on 2013-mar-01, 10:21:57
  */
 package imat;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import se.chalmers.ait.dat215.project.*;
@@ -91,9 +92,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
-
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -127,6 +126,10 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
             }
         });
 
+        jLabel4.setForeground(resourceMap.getColor("jLabel4.foreground")); // NOI18N
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
         jLabel5.setName("jLabel5"); // NOI18N
@@ -141,11 +144,10 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(20, 20, 20)
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE))
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(sparaInkopBtn)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
@@ -259,7 +261,9 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     String s = JOptionPane.showInputDialog(null, "Spara som:");
     if(s == null || s.length() == 0){
         jLabel4.setText("Namnet måste innehålla minst ett tecken!");
+        jLabel4.setForeground(Color.red);
     }else{
+        jLabel4.setText("");
         sil.setName(s);
         sil.setFromList(IMatDataHandler.getInstance().getShoppingCart().getItems());
         IMatView.savedShoppingListItems.add(sil);

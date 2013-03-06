@@ -90,6 +90,11 @@ public class ShoppingListItemPanel extends javax.swing.JPanel {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
@@ -136,12 +141,15 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     kvpOrigin.updateCart();
 }//GEN-LAST:event_jButton1ActionPerformed
 
+private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    updatePrice();
+}//GEN-LAST:event_jTextField1ActionPerformed
+
 private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
     char c = evt.getKeyChar();
     if(c < '0' || c > '9'){
         evt.consume();
     }
-    updatePrice();
 }//GEN-LAST:event_jTextField1KeyTyped
 
 private void updatePrice(){
