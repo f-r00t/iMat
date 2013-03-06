@@ -137,6 +137,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 20));
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(SplashPanel.class);
+        jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
@@ -189,6 +190,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel7.setName("jPanel7"); // NOI18N
         jPanel7.setPreferredSize(new java.awt.Dimension(258, 25));
 
+        jLabel3.setFont(resourceMap.getFont("jLabel3.font")); // NOI18N
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel3.setName("jLabel3"); // NOI18N
@@ -254,6 +256,7 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel10.setName("jPanel10"); // NOI18N
         jPanel10.setPreferredSize(new java.awt.Dimension(260, 25));
 
+        jLabel2.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
