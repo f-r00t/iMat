@@ -5,6 +5,9 @@
 package imat;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.LayoutManager;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import org.jdesktop.application.Action;
@@ -118,10 +121,26 @@ public class IMatView extends FrameView {
             jLabel2.setText(cart.getItems().size() + " varor");
             jLabel3.setText(cart.getTotal() + " kr");
         }
+        
         public void shoppingCartChanged(CartEvent ce) {
             ShoppingCart cart =IMatDataHandler.getInstance().
                     getShoppingCart();
             setCartLabels(cart);
+            
+            if(ce.isAddEvent()) {
+                LatestPurchasePanel lpp = new LatestPurchasePanel(ce.getShoppingItem());
+                if(jPanel7.getComponentCount() < 1) {
+                    jPanel7.add(lpp, BorderLayout.NORTH);
+                } else if(jPanel7.getComponentCount() > 1) {
+                    jPanel7.remove(0);
+                    Component comp = jPanel7.getComponent(0);
+                    jPanel7.remove(0);
+                    jPanel7.add(comp, BorderLayout.NORTH);
+                    jPanel7.add(lpp, BorderLayout.SOUTH);
+                } else {
+                    jPanel7.add(lpp, BorderLayout.SOUTH);
+                }
+            }
         }
     }
     
@@ -174,8 +193,6 @@ public class IMatView extends FrameView {
         jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        latestPurchasePanel2 = new imat.LatestPurchasePanel();
-        latestPurchasePanel1 = new imat.LatestPurchasePanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -269,13 +286,6 @@ public class IMatView extends FrameView {
         jPanel7.setName("jPanel7"); // NOI18N
         jPanel7.setVerifyInputWhenFocusTarget(false);
         jPanel7.setLayout(new java.awt.BorderLayout());
-
-        latestPurchasePanel2.setName("latestPurchasePanel2"); // NOI18N
-        jPanel7.add(latestPurchasePanel2, java.awt.BorderLayout.LINE_END);
-
-        latestPurchasePanel1.setName("latestPurchasePanel1"); // NOI18N
-        jPanel7.add(latestPurchasePanel1, java.awt.BorderLayout.PAGE_START);
-
         jPanel3.add(jPanel7, java.awt.BorderLayout.EAST);
 
         jPanel9.setName("jPanel9"); // NOI18N
@@ -475,8 +485,6 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private imat.LatestPurchasePanel latestPurchasePanel1;
-    private imat.LatestPurchasePanel latestPurchasePanel2;
     private javax.swing.JPanel mainPanel;
     private imat.SearchPanel searchPanel1;
     // End of variables declaration//GEN-END:variables
