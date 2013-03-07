@@ -110,18 +110,17 @@ public class SearchPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jToggleButton8 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setName("Form"); // NOI18N
 
@@ -141,75 +140,67 @@ public class SearchPanel extends javax.swing.JPanel {
 
         jPanel1.setName("jPanel1"); // NOI18N
 
-        buttonGroup1.add(jToggleButton3);
-        jToggleButton3.setText(resourceMap.getString("jToggleButton3.text")); // NOI18N
-        jToggleButton3.setName("jToggleButton3"); // NOI18N
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton4);
-        jToggleButton4.setText(resourceMap.getString("jToggleButton4.text")); // NOI18N
-        jToggleButton4.setName("jToggleButton4"); // NOI18N
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton5);
-        jToggleButton5.setText(resourceMap.getString("jToggleButton5.text")); // NOI18N
-        jToggleButton5.setName("jToggleButton5"); // NOI18N
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+        jButton3.setName("jButton3"); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton6);
-        jToggleButton6.setText(resourceMap.getString("jToggleButton6.text")); // NOI18N
-        jToggleButton6.setName("jToggleButton6"); // NOI18N
-        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setName("jButton4"); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton6ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton7);
-        jToggleButton7.setText(resourceMap.getString("jToggleButton7.text")); // NOI18N
-        jToggleButton7.setName("jToggleButton7"); // NOI18N
-        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
+        jButton5.setName("jButton5"); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton7ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton8);
-        jToggleButton8.setText(resourceMap.getString("jToggleButton8.text")); // NOI18N
-        jToggleButton8.setName("jToggleButton8"); // NOI18N
-        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
+        jButton6.setName("jButton6"); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton8ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton1);
-        jToggleButton1.setText(resourceMap.getString("jToggleButton1.text")); // NOI18N
-        jToggleButton1.setName("jToggleButton1"); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setText(resourceMap.getString("jButton8.text")); // NOI18N
+        jButton8.setName("jButton8"); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jToggleButton2);
-        jToggleButton2.setText(resourceMap.getString("jToggleButton2.text")); // NOI18N
-        jToggleButton2.setName("jToggleButton2"); // NOI18N
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton9.setText(resourceMap.getString("jButton9.text")); // NOI18N
+        jButton9.setName("jButton9"); // NOI18N
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                jButton9ActionPerformed(evt);
             }
         });
 
@@ -217,34 +208,34 @@ public class SearchPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-            .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jToggleButton1)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton2)
+                .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton3)
+                .addComponent(jButton3)
+                .addGap(6, 6, 6)
+                .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton4)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton8)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addComponent(jButton9)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -256,7 +247,7 @@ public class SearchPanel extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -275,7 +266,52 @@ private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
 }//GEN-LAST:event_jTextField1ActionPerformed
 
-private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+    List<Product> list = new ArrayList<Product>();
+    list.addAll(handler.getProducts(ProductCategory.COLD_DRINKS));
+    list.addAll(handler.getProducts(ProductCategory.HOT_DRINKS));
+    listener.loadNewSearch(list);
+}//GEN-LAST:event_jButton8ActionPerformed
+
+private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+    List<Product> list = new ArrayList<Product>();
+    list.addAll(handler.getProducts(ProductCategory.BREAD));
+    listener.loadNewSearch(list);
+}//GEN-LAST:event_jButton5ActionPerformed
+
+private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+    List<Product> list = new ArrayList<Product>();
+    list.addAll(handler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
+    listener.loadNewSearch(list);
+}//GEN-LAST:event_jButton6ActionPerformed
+
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+    List<Product> list = new ArrayList<Product>();
+    list.addAll(handler.getProducts(ProductCategory.PASTA));
+    list.addAll(handler.getProducts(ProductCategory.POTATO_RICE));
+    listener.loadNewSearch(list);
+}//GEN-LAST:event_jButton3ActionPerformed
+
+private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+    List<Product> list = new ArrayList<Product>();
+    list.addAll(handler.getProducts(ProductCategory.DAIRIES));
+    listener.loadNewSearch(list);
+}//GEN-LAST:event_jButton4ActionPerformed
+
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    IMatDataHandler handler = IMatDataHandler.getInstance();
+    List<Product> list = new ArrayList<Product>();
+    list.addAll(handler.getProducts(ProductCategory.MEAT));
+    list.addAll(handler.getProducts(ProductCategory.FISH));
+    listener.loadNewSearch(list);
+}//GEN-LAST:event_jButton2ActionPerformed
+
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     IMatDataHandler handler = IMatDataHandler.getInstance();
     List<Product> list = new ArrayList<Product>();
     list.addAll(handler.getProducts(ProductCategory.FRUIT));
@@ -288,72 +324,26 @@ private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GE
     list.addAll(handler.getProducts(ProductCategory.MELONS));
     list.addAll(handler.getProducts(ProductCategory.NUTS_AND_SEEDS));
     listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton1ActionPerformed
+}//GEN-LAST:event_jButton1ActionPerformed
 
-private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-    List<Product> list = new ArrayList<Product>();
-    list.addAll(handler.getProducts(ProductCategory.MEAT));
-    list.addAll(handler.getProducts(ProductCategory.FISH));
-    listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton2ActionPerformed
-
-private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-    List<Product> list = new ArrayList<Product>();
-    list.addAll(handler.getProducts(ProductCategory.DAIRIES));
-    listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton3ActionPerformed
-
-private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-    List<Product> list = new ArrayList<Product>();
-    list.addAll(handler.getProducts(ProductCategory.PASTA));
-    list.addAll(handler.getProducts(ProductCategory.POTATO_RICE));
-    listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton4ActionPerformed
-
-private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-    List<Product> list = new ArrayList<Product>();
-    list.addAll(handler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
-    listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton5ActionPerformed
-
-private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-    List<Product> list = new ArrayList<Product>();
-    list.addAll(handler.getProducts(ProductCategory.BREAD));
-    listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton6ActionPerformed
-
-private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
-    IMatDataHandler handler = IMatDataHandler.getInstance();
-    List<Product> list = new ArrayList<Product>();
-    list.addAll(handler.getProducts(ProductCategory.COLD_DRINKS));
-    list.addAll(handler.getProducts(ProductCategory.HOT_DRINKS));
-    listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton7ActionPerformed
-
-private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
     IMatDataHandler handler = IMatDataHandler.getInstance();
     List<Product> list = new ArrayList<Product>();
     list.addAll(handler.getProducts(ProductCategory.SWEET));
     listener.loadNewSearch(list);
-}//GEN-LAST:event_jToggleButton8ActionPerformed
+}//GEN-LAST:event_jButton9ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
-    private javax.swing.JToggleButton jToggleButton8;
     // End of variables declaration//GEN-END:variables
 }
