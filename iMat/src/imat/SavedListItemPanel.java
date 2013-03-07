@@ -55,6 +55,8 @@ public class SavedListItemPanel extends javax.swing.JPanel {
        jLabel2.setText(shoppingItemList.getName());
        jLabel4.setText(Integer.toString(shoppingItemList.getAmount()));
        jLabel5.setText(Integer.toString(shoppingItemList.getTotal()) + " kr");
+       jButton1.setEnabled(false);
+       jButton1.setVisible(false);
     }
 
     /** This method is called from within the constructor to
@@ -152,15 +154,8 @@ public class SavedListItemPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-    if(jp.getTitle() == "Tidigare inköp"){
-        IMatDataHandler.getInstance().getOrders().remove(o);
-        System.out.println(IMatDataHandler.getInstance().getOrders().size());
-        jp.updateHistoryList();
-    }else{
-        (IMatView.savedShoppingListItems).remove(shoppingItemList);
-        jp.updateShoppingList();
-    }
+    (IMatView.savedShoppingListItems).remove(shoppingItemList);
+    jp.updateShoppingList();
     IMatView.splashPanel.addLatestPurchases();
     IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
     ListSaveLoad.getInstance().saveList(IMatView.savedShoppingListItems);

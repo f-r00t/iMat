@@ -39,7 +39,10 @@ public class FoodPanel extends javax.swing.JPanel {
     /** Creates new form TestPanel */
     public FoodPanel(Product p, int width, int height) {
         initComponents();
-        plusButton.setText("+");
+        plusButton.setIcon(new ImageIcon(getClass().getResource("resources/plusButton.png")));
+        plusButton.setRolloverIcon(new ImageIcon(getClass().getResource("resources/plusButtonHover.png")));
+        plusButton.setPressedIcon(new ImageIcon(getClass().getResource("resources/plusButtonClicked.png")));
+        plusButton.setBorderPainted(false);
         
         this.p = p;
         plusButton.addActionListener(new java.awt.event.ActionListener() {

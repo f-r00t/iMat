@@ -48,7 +48,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
     }
     
     public void addSavedPurchases(List<ShoppingItemList> lists){
-        System.out.println("lists: "+ lists.size());
         jPanel16.removeAll();
         
         if(lists.size()+1 > gridHeight){
@@ -73,9 +72,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         }catch(NullPointerException e){
             this.setPreferredSize(d);
         }
-        
-        
-        System.out.println(this.getPreferredSize().height);
     }
     
     
@@ -83,7 +79,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         
         jPanel15.removeAll();
         List<Order> oList = IMatDataHandler.getInstance().getOrders();
-        System.out.println("oList: "+ oList.size() + " girdHeight: " + gridHeight);
         if(oList.size()+1 > gridHeight){
             gridHeight = oList.size();
         }
@@ -106,8 +101,6 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         }catch(NullPointerException e){
             this.setPreferredSize(d);
         }
-        
-        System.out.println(this.getPreferredSize().height);
     }
     
     public String getTitle(){
