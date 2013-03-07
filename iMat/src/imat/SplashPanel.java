@@ -45,28 +45,29 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
     }
     
     public void addSavedPurchases(List<ShoppingItemList> lists){
-        
+        jPanel16.removeAll();
         jPanel16.setLayout(new GridLayout(lists.size()+1, 1, 0, 15));
         
         for(int i = 0; i < lists.size(); i++){
             jPanel16.add(new ShoppingListPanel(lists.get(i)));
         }
         
-        d = new Dimension(700, lists.size()*175 + 600);
+        d = new Dimension(700, lists.size()*185 + 600);
         this.setPreferredSize(d);
     }
     
     
-    private void addLatestPurchases(){
+    public void addLatestPurchases(){
+        jPanel15.removeAll();
         List<Order> oList = IMatDataHandler.getInstance().getOrders();
         
-        jPanel15.setLayout(new GridLayout(oList.size(), 1, 0, 15));
+        jPanel15.setLayout(new GridLayout(oList.size()+1, 1, 0, 15));
         
         for(Order o : oList){
             jPanel15.add(new ShoppingListPanel(o));
         }
         
-        Dimension dTmp = new Dimension(700, oList.size()*175 + 550);
+        Dimension dTmp = new Dimension(700, oList.size()*185 + 550);
         try{
             if(dTmp.height > d.height){
                 d = dTmp;

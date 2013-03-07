@@ -57,21 +57,12 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         for(ShoppingItem s : siList){
             ImageIcon icon = IMatDataHandler.getInstance().
                     getImageIcon(s.getProduct(), 60, 53);
-            jPanel2.add(new FoodImagePanel(null));
-        }
-        
-        /*
-        for(int i = 0; i < o.size(); i++){
-            ImageIcon icon = IMatDataHandler.getInstance().
-                    getImageIcon(tmp.get(i).getProduct(), 65, 50);
             jPanel2.add(new FoodImagePanel(icon));
         }
-        
-        for(int n = 0; n < 9-sil.size(); n++){
+        for(int n = 0; n < 9-sList.size(); n++){
             jPanel2.add(new FoodImagePanel(null));
-        }*/
-        
-        this.setPreferredSize(new Dimension(175, 500));
+        }        
+        this.setPreferredSize(new Dimension(185, 500));
     }
 
     /** This method is called from within the constructor to

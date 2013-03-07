@@ -473,7 +473,7 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     kvitto = new kvittoPanel(firstLetterUpperCase(jTextField1.getText())+" "+firstLetterUpperCase(jTextField4.getText()), jTextField9.getText(),jTextField6.getText());
     IMatView.setMainPanelto(kvitto);
-    
+    IMatView.splashPanel.addLatestPurchases();
 
 }//GEN-LAST:event_jButton4ActionPerformed
 

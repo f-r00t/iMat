@@ -38,7 +38,7 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jLabel9.setText(address);
         jLabel10.setText(postnr);
         updateKvitto();
-       //IMatDataHandler.getInstance().placeOrder();
+        IMatDataHandler.getInstance().placeOrder();
     
         
     }

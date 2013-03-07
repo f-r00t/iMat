@@ -257,15 +257,18 @@ private void emptyCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_emptyCartBtnActionPerformed
 
 private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaInkopBtnActionPerformed
-    ShoppingItemList sil = new ShoppingItemList();
+    ShoppingItemList sil;
     String s = JOptionPane.showInputDialog(null, "Spara som:");
     if(s == null || s.length() == 0){
         jLabel4.setText("Namnet måste innehålla minst ett tecken!");
         jLabel4.setForeground(Color.red);
     }else{
         jLabel4.setText("");
+        sil = new ShoppingItemList();
         sil.setName(s);
-        sil.setFromList(IMatDataHandler.getInstance().getShoppingCart().getItems());
+        for(ShoppingItem si : IMatDataHandler.getInstance().getShoppingCart().getItems()){
+            sil.addProduct(si);
+        }
         IMatView.savedShoppingListItems.add(sil);
         IMatView.savedListsPanel.updateShoppingList();
         IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);

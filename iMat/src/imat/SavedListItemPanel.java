@@ -136,6 +136,8 @@ public class SavedListItemPanel extends javax.swing.JPanel {
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     (IMatView.savedShoppingListItems).remove(shoppingItemList);
     jp.updateShoppingList();
+    IMatView.splashPanel.addLatestPurchases();
+    IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
 }//GEN-LAST:event_jButton1ActionPerformed
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
