@@ -526,8 +526,7 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     favoritePanel.repaint();
     favoritePanel.revalidate();
     
-    //Added save here, should be executed when the program is exited***
-    saveShoppingLists();
+    IMatDataHandler.getInstance().shutDown();
 }//GEN-LAST:event_jButton8ActionPerformed
 
 private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

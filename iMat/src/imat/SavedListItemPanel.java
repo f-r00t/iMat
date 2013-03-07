@@ -138,6 +138,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     jp.updateShoppingList();
     IMatView.splashPanel.addLatestPurchases();
     IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
+    IMatDataHandler.getInstance().shutDown();
 }//GEN-LAST:event_jButton1ActionPerformed
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

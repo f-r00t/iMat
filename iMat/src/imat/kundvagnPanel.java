@@ -42,7 +42,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
         int height = 0;
        
         for(int i = 0; i < cart.size(); i++){
-            height += 75;
+            height += 55;
             jPanel4.add(new ShoppingListItemPanel(cart.get(i), this));
         }
         
@@ -273,7 +273,10 @@ private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         IMatView.savedListsPanel.updateShoppingList();
         IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
     }
-
+    
+    //Saves the lists to a textfile: "savefile.txt".
+    IMatView.saveShoppingLists();
+    IMatDataHandler.getInstance().shutDown();
 }//GEN-LAST:event_sparaInkopBtnActionPerformed
 
 private void betalaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betalaBtnActionPerformed

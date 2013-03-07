@@ -433,7 +433,7 @@ char c = evt.getKeyChar();
 }//GEN-LAST:event_jTextField8KeyTyped
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    IMatView.setMainPanelto(IMatView.getMainPanel());
+    IMatView.setMainPanelto(IMatView.splashPanel);
 }//GEN-LAST:event_jButton3ActionPerformed
 
 public String firstLetterUpperCase(String s){

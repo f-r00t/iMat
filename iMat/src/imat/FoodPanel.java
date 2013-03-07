@@ -39,6 +39,7 @@ public class FoodPanel extends javax.swing.JPanel {
     /** Creates new form TestPanel */
     public FoodPanel(Product p, int width, int height) {
         initComponents();
+        plusButton.setText("+");
         
         this.p = p;
         plusButton.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +214,7 @@ private void starButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void amountFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amountFieldKeyTyped
     char c = evt.getKeyChar();
-    if(c < '0' || c > '9'){
+    if(c < '0' || c > '9' || (amountField.getText().length() == 2)){
         evt.consume();
     }
 }//GEN-LAST:event_amountFieldKeyTyped
@@ -226,6 +227,7 @@ public void setFavorite(){
         starButton.setIcon(unselectedStar);
         IMatDataHandler.getInstance().removeFavorite(p);
     }
+    IMatDataHandler.getInstance().shutDown();
 }
 
 public void setStar(){
