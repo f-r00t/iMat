@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -26,6 +27,7 @@ public class SavedListItemPanel extends javax.swing.JPanel {
     public static int nameCount = 0;
     private SavedListsPanel jp;
     private ShoppingItemList shoppingItemList;
+    private Order o;
     
     /** Creates new form HistoryListPanel */
     public SavedListItemPanel(SavedListsPanel jp, ShoppingItemList sil) {
@@ -37,6 +39,22 @@ public class SavedListItemPanel extends javax.swing.JPanel {
         jLabel2.setText(sil.getName());
         jLabel4.setText(Integer.toString(sil.getAmount()));
         jLabel5.setText(Integer.toString(sil.getTotal()) + " kr");
+    }
+    
+    public SavedListItemPanel(SavedListsPanel jp, Order o) {
+       initComponents();
+       
+       this.o = o;
+       this.jp = jp;
+       
+       nameCount++;
+       shoppingItemList = new ShoppingItemList();
+       for(ShoppingItem s : o.getItems()){
+           shoppingItemList.add(s);
+       }
+       jLabel2.setText(shoppingItemList.getName());
+       jLabel4.setText(Integer.toString(shoppingItemList.getAmount()));
+       jLabel5.setText(Integer.toString(shoppingItemList.getTotal()) + " kr");
     }
 
     /** This method is called from within the constructor to
@@ -134,10 +152,18 @@ public class SavedListItemPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    (IMatView.savedShoppingListItems).remove(shoppingItemList);
-    jp.updateShoppingList();
+    
+    if(jp.getTitle() == "Tidigare inköp"){
+        IMatDataHandler.getInstance().getOrders().remove(o);
+        System.out.println(IMatDataHandler.getInstance().getOrders().size());
+        jp.updateHistoryList();
+    }else{
+        (IMatView.savedShoppingListItems).remove(shoppingItemList);
+        jp.updateShoppingList();
+    }
     IMatView.splashPanel.addLatestPurchases();
     IMatView.splashPanel.addSavedPurchases(IMatView.savedShoppingListItems);
+    ListSaveLoad.getInstance().saveList(IMatView.savedShoppingListItems);
     IMatDataHandler.getInstance().shutDown();
 }//GEN-LAST:event_jButton1ActionPerformed
 

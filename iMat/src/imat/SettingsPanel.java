@@ -392,7 +392,7 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if (jTextField1 == null || jTextField2 == null || jTextField4 == null||
         jTextField6 == null || jTextField9 == null || jTextField8 == null||
         jTextField7 == null || jTextField10 == null|| jTextField10.getText().length() != 3 
-        || jTextField7.getText().length() != 16){
+        || jTextField7.getText().length() != 16 || jComboBox4.getSelectedItem() == null || jComboBox2.getSelectedItem() == null){
             return;
     }
     Customer c = IMatDataHandler.getInstance().getCustomer();

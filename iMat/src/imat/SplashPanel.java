@@ -24,15 +24,18 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
 
     private String title;
     private Dimension d;
+    private int height;
+    private int gridHeight;
     
     /** Creates new form StartViewPanel */
     public SplashPanel() {
         initComponents();
         addChosenProducts(null);
         addLatestPurchases();
-        
+        height = 0;
         title = "Startsida";
-        d = new Dimension(0, 0);
+        d = new Dimension(700, height);
+        gridHeight = 1;
     }
     
     private void addChosenProducts(List<Product> products){
@@ -45,37 +48,66 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
     }
     
     public void addSavedPurchases(List<ShoppingItemList> lists){
+        System.out.println("lists: "+ lists.size());
         jPanel16.removeAll();
-        jPanel16.setLayout(new GridLayout(lists.size()+1, 1, 0, 15));
         
+        if(lists.size()+1 > gridHeight){
+            gridHeight = lists.size();
+        }
+        
+        jPanel16.setLayout(new GridLayout(gridHeight+1, 1, 0, 15));
+        
+        int tmpHeight = lists.size()*185 + 420;
         for(int i = 0; i < lists.size(); i++){
             jPanel16.add(new ShoppingListPanel(lists.get(i)));
         }
         
-        d = new Dimension(700, lists.size()*185 + 600);
-        this.setPreferredSize(d);
-    }
-    
-    
-    public void addLatestPurchases(){
-        jPanel15.removeAll();
-        List<Order> oList = IMatDataHandler.getInstance().getOrders();
+        Dimension dTmp = new Dimension(700, tmpHeight);
         
-        jPanel15.setLayout(new GridLayout(oList.size()+1, 1, 0, 15));
-        
-        for(Order o : oList){
-            jPanel15.add(new ShoppingListPanel(o));
-        }
-        
-        Dimension dTmp = new Dimension(700, oList.size()*185 + 550);
         try{
-            if(dTmp.height > d.height){
+            if( tmpHeight > height){
+                height = tmpHeight;
                 d = dTmp;
                 this.setPreferredSize(dTmp);
             }
         }catch(NullPointerException e){
             this.setPreferredSize(d);
         }
+        
+        
+        System.out.println(this.getPreferredSize().height);
+    }
+    
+    
+    public void addLatestPurchases(){
+        
+        jPanel15.removeAll();
+        List<Order> oList = IMatDataHandler.getInstance().getOrders();
+        System.out.println("oList: "+ oList.size() + " girdHeight: " + gridHeight);
+        if(oList.size()+1 > gridHeight){
+            gridHeight = oList.size();
+        }
+        
+        jPanel15.setLayout(new GridLayout(gridHeight+1, 1, 0, 15));
+        
+        for(Order o : oList){
+            jPanel15.add(new ShoppingListPanel(o));
+        }
+        
+        int tmpHeight = oList.size()*185 + 420;
+        Dimension dTmp = new Dimension(700, tmpHeight);
+        
+        try{
+            if(tmpHeight > height){
+                height = tmpHeight;
+                d = dTmp;
+                this.setPreferredSize(dTmp);
+            }
+        }catch(NullPointerException e){
+            this.setPreferredSize(d);
+        }
+        
+        System.out.println(this.getPreferredSize().height);
     }
     
     public String getTitle(){

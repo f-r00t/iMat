@@ -49,7 +49,7 @@ public class IMatView extends FrameView {
         initComponents();
         manuallyInitComponents();
         mainPanelHistory = new ArrayList<JPanel>();
-        splashPanel = new SplashPanel();
+        
         cartPanel = new kundvagnPanel();
         shoppingItems = new ArrayList<Product>();
         historyPanel = new SavedListsPanel("Tidigare inköp", null);
@@ -58,13 +58,17 @@ public class IMatView extends FrameView {
         favoritePanel  = new FoodMatrixPanel("Favoriter");
         IMatDataHandler.getInstance().getShoppingCart().
                 addShoppingCartListener(new CartListener());
-        setMainPanelto(splashPanel);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
         
         //Done for later use
         savedShoppingListItems = ListSaveLoad.getInstance().loadList();
         savedListsPanel = new SavedListsPanel("Sparade inköpslistor", savedShoppingListItems);
+        
+        splashPanel = new SplashPanel();
+        splashPanel.addLatestPurchases();
         splashPanel.addSavedPurchases(savedShoppingListItems);
+        
+        setMainPanelto(splashPanel);
         if(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()){
             kundvagnPanel.betalaBtn.setEnabled(false);
             kundvagnPanel.emptyCartBtn.setEnabled(false);

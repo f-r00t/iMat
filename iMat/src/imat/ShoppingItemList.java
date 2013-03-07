@@ -47,6 +47,13 @@ public class ShoppingItemList implements Serializable{
         return sum;
     }
     
+    public Order returnAsOrder(){
+        Order o = new Order();
+        o.setItems(shoppingList);
+        
+        return o;
+    }
+    
     public List<ShoppingItem> getProductList(){
         return shoppingList;
     }
