@@ -15,6 +15,7 @@ import java.util.*;
 /**
  *
  * @author Harry
+ * @author code Kim Egenvall
  */
 public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInterface {
     private kundvagnPanel kv;
@@ -44,10 +45,11 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jTextField2.setText(c.getMobilePhoneNumber());
         jTextField8.setText(c.getPhoneNumber());
         
+        // Automatic input from saved creditcard
         jComboBox1.setSelectedItem(cc.getCardType());
         jTextField7.setText(cc.getCardNumber());
-        jComboBox2.setSelectedItem(cc.getValidMonth());
-        jComboBox4.setSelectedItem(cc.getValidYear());
+        jComboBox2.setSelectedItem(cc.getValidMonth()+"");
+        jComboBox4.setSelectedItem(cc.getValidYear()+"");
         jTextField10.setText(""+cc.getVerificationCode());
       
         
@@ -440,13 +442,9 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     
     if(jCheckBox1.isSelected()){
-        Customer c = IMatDataHandler.getInstance().getCustomer();
-        
-        
+        Customer c = IMatDataHandler.getInstance().getCustomer(); 
         c.setFirstName(firstLetterUpperCase(jTextField1.getText()));
-        c.setLastName(firstLetterUpperCase(jTextField4.getText()));
-        
-        
+        c.setLastName(firstLetterUpperCase(jTextField4.getText())); 
         c.setPostCode(jTextField6.getText());
         c.setPostAddress(jTextField9.getText());
         c.setMobilePhoneNumber(jTextField2.getText());
@@ -456,13 +454,10 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if(jCheckBox2.isSelected()){
         
         cc.setCardType(jComboBox1.getSelectedItem().toString());
-        System.out.println(jComboBox1.getSelectedItem().toString());
         cc.setCardNumber(jTextField7.getText());
         Integer chosenMonth = Integer.parseInt(jComboBox2.getSelectedItem().toString());
-        System.out.println(Integer.parseInt(jComboBox2.getSelectedItem().toString()));
         cc.setValidMonth(chosenMonth); 
         Integer chosenYear = Integer.parseInt(jComboBox4.getSelectedItem().toString());
-        System.out.println(Integer.parseInt(jComboBox4.getSelectedItem().toString()));
         cc.setValidYear(chosenYear);
         cc.setVerificationCode(Integer.parseInt(jTextField10.getText()));
     }
