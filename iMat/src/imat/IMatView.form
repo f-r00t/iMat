@@ -38,6 +38,13 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel4">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" resourceKey="jLabel4.font"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jLabel4.text"/>
+                    <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JButton" name="jButton1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" resourceKey="jButton1.icon"/>
@@ -59,6 +66,9 @@
                     <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton2.pressedIcon"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" resourceKey="jButton2.rolloverIcon"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton4">
                   <Properties>
@@ -149,7 +159,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel2" alignment="0" pref="177" max="32767" attributes="0"/>
+                          <Component id="jPanel2" alignment="0" pref="198" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -217,6 +227,7 @@
                               <Image iconType="3" name="/imat/resources/shoppingCart.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" resourceKey="jButton5.text"/>
+                            <Property name="toolTipText" type="java.lang.String" resourceKey="jButton5.toolTipText"/>
                             <Property name="autoscrolls" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="jButton5" noResource="true"/>
                             <Property name="pressedIcon" type="javax.swing.Icon" resourceKey="jButton5.pressedIcon"/>

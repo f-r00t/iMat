@@ -41,6 +41,7 @@ public class IMatView extends FrameView {
     public static SavedListsPanel savedListsPanel;
     private FoodMatrixPanel favoritePanel;
     private static List<Product> shoppingItems;
+    public static SettingsPanel settingsPanel;
     
     public IMatView(SingleFrameApplication app) {
         super(app);
@@ -52,6 +53,7 @@ public class IMatView extends FrameView {
         cartPanel = new kundvagnPanel();
         shoppingItems = new ArrayList<Product>();
         historyPanel = new SavedListsPanel("Tidigare inköp", null);
+        settingsPanel = new SettingsPanel();
         
         favoritePanel  = new FoodMatrixPanel("Favoriter");
         IMatDataHandler.getInstance().getShoppingCart().
@@ -232,6 +234,7 @@ public class IMatView extends FrameView {
         mainPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -264,6 +267,11 @@ public class IMatView extends FrameView {
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(IMatView.class);
+        jLabel4.setFont(resourceMap.getFont("jLabel4.font")); // NOI18N
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+        jPanel6.add(jLabel4);
+
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setToolTipText(resourceMap.getString("jButton1.toolTipText")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
@@ -282,6 +290,11 @@ public class IMatView extends FrameView {
         jButton2.setName("jButton2"); // NOI18N
         jButton2.setPressedIcon(resourceMap.getIcon("jButton2.pressedIcon")); // NOI18N
         jButton2.setRolloverIcon(resourceMap.getIcon("jButton2.rolloverIcon")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton2);
 
         jButton4.setIcon(resourceMap.getIcon("jButton4.icon")); // NOI18N
@@ -350,6 +363,7 @@ public class IMatView extends FrameView {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/shoppingCart.png"))); // NOI18N
         jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
+        jButton5.setToolTipText(resourceMap.getString("jButton5.toolTipText")); // NOI18N
         jButton5.setAutoscrolls(true);
         jButton5.setName("jButton5"); // NOI18N
         jButton5.setPressedIcon(resourceMap.getIcon("jButton5.pressedIcon")); // NOI18N
@@ -388,7 +402,7 @@ public class IMatView extends FrameView {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,6 +527,11 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     saveShoppingLists();
 }//GEN-LAST:event_jButton8ActionPerformed
 
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    setMainPanelto(settingsPanel);
+    settingsPanel.update();
+}//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -525,6 +544,7 @@ private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
