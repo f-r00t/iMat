@@ -52,7 +52,7 @@ public class SavedListItemPanel extends javax.swing.JPanel {
        for(ShoppingItem s : o.getItems()){
            shoppingItemList.add(s);
        }
-       jLabel2.setText(shoppingItemList.getName());
+       jLabel2.setText(o.getDate().toString().substring(0, 10));
        jLabel4.setText(Integer.toString(shoppingItemList.getAmount()));
        jLabel5.setText(Integer.toString(shoppingItemList.getTotal()) + " kr");
        jButton1.setEnabled(false);

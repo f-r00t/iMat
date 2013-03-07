@@ -232,8 +232,7 @@ public class SettingsPanel extends javax.swing.JPanel implements TitleLabelInter
                 .add(20, 20, 20)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jSeparator1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 466, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(19, 19, 19))
+                    .add(jSeparator1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 466, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
@@ -317,7 +316,8 @@ public class SettingsPanel extends javax.swing.JPanel implements TitleLabelInter
                             .add(jButton1)
                             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                                 .add(jLabel15)
-                                .add(jTextField10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))))
+                                .add(jTextField10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -367,14 +367,20 @@ char c = evt.getKeyChar();
 private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
 char c = evt.getKeyChar();
     if(c < 'a' || c > 'z'){
-        evt.consume();
+        if(c < 'A' || c > 'Z'){
+            if(c != '-'){
+                evt.consume();
+            }
+        }
     }
 }//GEN-LAST:event_jTextField1KeyTyped
 
 private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
 char c = evt.getKeyChar();
     if(c < 'a' || c > 'z'){
-        evt.consume();
+        if(c < 'A' || c > 'Z'){
+            evt.consume();
+        }
     }
 }//GEN-LAST:event_jTextField4KeyTyped
 
@@ -392,7 +398,8 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if (jTextField1 == null || jTextField2 == null || jTextField4 == null||
         jTextField6 == null || jTextField9 == null || jTextField8 == null||
         jTextField7 == null || jTextField10 == null|| jTextField10.getText().length() != 3 
-        || jTextField7.getText().length() != 16 || jComboBox4.getSelectedItem() == null || jComboBox2.getSelectedItem() == null){
+        || jTextField7.getText().length() != 16 || jComboBox4.getSelectedItem() == null 
+            || jComboBox2.getSelectedItem() == null || jTextField6.getText().length() != 5){
             return;
     }
     Customer c = IMatDataHandler.getInstance().getCustomer();
@@ -407,14 +414,18 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     c.setPostAddress(jTextField9.getText());
     c.setMobilePhoneNumber(jTextField2.getText());
     c.setPhoneNumber(jTextField8.getText());
-    
         
     cc.setCardType(jComboBox1.getSelectedItem().toString());
     cc.setCardNumber(jTextField7.getText());
-    Integer chosenMonth = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+    Integer chosenMonth = 0;
+    Integer chosenYear = 0;
+    try{
+    chosenMonth = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+    chosenYear = Integer.parseInt(jComboBox4.getSelectedItem().toString());
+    }catch(NumberFormatException e){}
     cc.setValidMonth(chosenMonth);
-    Integer chosenYear = Integer.parseInt(jComboBox4.getSelectedItem().toString());
     cc.setValidYear(chosenYear);
+    
     cc.setVerificationCode(Integer.parseInt(jTextField10.getText()));
 }//GEN-LAST:event_jButton4ActionPerformed
 

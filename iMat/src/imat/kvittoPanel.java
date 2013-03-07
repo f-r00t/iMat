@@ -51,10 +51,10 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         int height = 0;
        
         for(int i = 0; i < cartItems.size(); i++){
-            height += 45;
+            height += 50;
             jPanel1.add(new kvittoItemPanel(cartItems.get(i)));
         }
-        
+        orderTime.setText(IMatDataHandler.getInstance().getOrders().get(0).getDate().toString());
         jPanel1.setPreferredSize(new Dimension(500, height));
         revalidate();
         repaint();
@@ -99,8 +99,6 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -122,15 +120,15 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel2.setName("jPanel2"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(kvittoPanel.class);
-        jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel3.setName("jLabel3"); // NOI18N
 
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
@@ -177,9 +175,9 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
                         .add(jLabel2)
                         .add(68, 68, 68))
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel5)
-                            .add(jLabel4))
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel9)
@@ -263,32 +261,16 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
 
         jPanel6.setName("jPanel6"); // NOI18N
 
-        jLabel6.setFont(resourceMap.getFont("jLabel6.font")); // NOI18N
-        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
-        jLabel6.setName("jLabel6"); // NOI18N
-
-        jLabel11.setFont(resourceMap.getFont("jLabel11.font")); // NOI18N
-        jLabel11.setText(resourceMap.getString("jLabel11.text")); // NOI18N
-        jLabel11.setName("jLabel11"); // NOI18N
-
-        jLabel14.setFont(resourceMap.getFont("jLabel14.font")); // NOI18N
-        jLabel14.setText(resourceMap.getString("jLabel14.text")); // NOI18N
         jLabel14.setName("jLabel14"); // NOI18N
 
-        jLabel15.setFont(resourceMap.getFont("jLabel15.font")); // NOI18N
-        jLabel15.setText(resourceMap.getString("jLabel15.text")); // NOI18N
         jLabel15.setName("jLabel15"); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel6)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 261, Short.MAX_VALUE)
-                .add(jLabel11)
-                .add(95, 95, 95)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(489, Short.MAX_VALUE)
                 .add(jLabel14)
                 .add(67, 67, 67)
                 .add(jLabel15)
@@ -297,10 +279,8 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(jLabel15)
-                .add(jLabel14)
-                .add(jLabel11))
+                .add(jLabel14))
         );
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
@@ -315,7 +295,7 @@ public class kvittoPanel extends javax.swing.JPanel implements TitleLabelInterfa
                 .add(84, 84, 84))
             .add(jPanel5Layout.createSequentialGroup()
                 .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(38, 38, 38))
+                .add(57, 57, 57))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -375,7 +355,6 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -384,7 +363,6 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

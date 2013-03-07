@@ -76,6 +76,7 @@ public class SearchPanel extends javax.swing.JPanel {
             panel.repaint();
             panel.revalidate();
         }
+        
         public void loadNewSearch(List<Product> productList) {
             if(!(IMatView.getMainPanel() instanceof FoodMatrixPanel)) {
                 IMatView.setMainPanelto(panel);
@@ -131,6 +132,11 @@ public class SearchPanel extends javax.swing.JPanel {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
             }
         });
 
@@ -235,7 +241,7 @@ public class SearchPanel extends javax.swing.JPanel {
                 .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -247,7 +253,7 @@ public class SearchPanel extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -332,6 +338,11 @@ private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     list.addAll(handler.getProducts(ProductCategory.SWEET));
     listener.loadNewSearch(list);
 }//GEN-LAST:event_jButton9ActionPerformed
+
+private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    jTextField1.requestFocus();
+    jTextField1.selectAll();
+}//GEN-LAST:event_jTextField1FocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

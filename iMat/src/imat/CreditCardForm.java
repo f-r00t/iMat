@@ -436,7 +436,7 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if (jTextField1 == null || jTextField2 == null || jTextField4 == null||
         jTextField6 == null || jTextField9 == null || jTextField8 == null||
         jTextField7 == null || jTextField10 == null|| jTextField10.getText().length() != 3 
-        || jTextField7.getText().length() != 16){
+        || jTextField7.getText().length() != 16 || jTextField6.getText().length() != 5){
             return;
     }
     
@@ -455,9 +455,13 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         
         cc.setCardType(jComboBox1.getSelectedItem().toString());
         cc.setCardNumber(jTextField7.getText());
-        Integer chosenMonth = Integer.parseInt(jComboBox2.getSelectedItem().toString());
-        cc.setValidMonth(chosenMonth); 
-        Integer chosenYear = Integer.parseInt(jComboBox4.getSelectedItem().toString());
+        Integer chosenMonth = 0;
+        Integer chosenYear = 0;
+        try{
+            chosenMonth = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+            chosenYear = Integer.parseInt(jComboBox4.getSelectedItem().toString());
+        }catch(NumberFormatException e){}
+        cc.setValidMonth(chosenMonth);
         cc.setValidYear(chosenYear);
         cc.setVerificationCode(Integer.parseInt(jTextField10.getText()));
     }
@@ -526,14 +530,20 @@ private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
 char c = evt.getKeyChar();
     if(c < 'a' || c > 'z'){
-        evt.consume();
+        if(c < 'A' || c > 'Z'){
+            if(c != '-'){
+                evt.consume();
+            }
+        }
     }
 }//GEN-LAST:event_jTextField1KeyTyped
 
 private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
 char c = evt.getKeyChar();
     if(c < 'a' || c > 'z'){
-        evt.consume();
+        if(c < 'A' || c > 'Z'){
+            evt.consume();
+        }
     }
 }//GEN-LAST:event_jTextField4KeyTyped
 
