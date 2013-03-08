@@ -44,6 +44,7 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jTextField9.setText(c.getPostAddress());
         jTextField2.setText(c.getMobilePhoneNumber());
         jTextField8.setText(c.getPhoneNumber());
+        jTextField11.setText(c.getEmail());
         
         // Automatic input from saved creditcard
         jComboBox1.setSelectedItem(cc.getCardType());
@@ -105,6 +106,8 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
         jCheckBox2 = new javax.swing.JCheckBox();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
 
         jTextField3.setName("jTextField3"); // NOI18N
 
@@ -285,6 +288,18 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
             }
         });
 
+        jTextField11.setName("jTextField11"); // NOI18N
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField11KeyTyped(evt);
+            }
+        });
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setText(resourceMap.getString("jLabel17.text")); // NOI18N
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setName("jLabel17"); // NOI18N
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -292,67 +307,75 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jButton3)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jButton4))
-                    .add(layout.createSequentialGroup()
-                        .add(4, 4, 4)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel8)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(jLabel10)
-                                    .add(jLabel9)
-                                    .add(jLabel7)
-                                    .add(jLabel15))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                        .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(layout.createSequentialGroup()
-                                                .add(jTextField10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                .add(18, 18, 18)
-                                                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                            .add(layout.createSequentialGroup()
-                                                .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(jLabel12)
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                            .add(jCheckBox2))))
-                                .add(18, 18, 18)
-                                .add(jLabel11))))
-                    .add(layout.createSequentialGroup()
-                        .add(jRadioButton1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jRadioButton2))
-                    .add(jLabel16)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jSeparator2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jLabel13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel4))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jCheckBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 193, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jTextField9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(268, 268, 268)))
-                .add(98, 98, 98))
+                        .add(388, 388, 388))
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                                .add(jButton3)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(jButton4))
+                            .add(layout.createSequentialGroup()
+                                .add(4, 4, 4)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel8)
+                                    .add(layout.createSequentialGroup()
+                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                            .add(jLabel10)
+                                            .add(jLabel9)
+                                            .add(jLabel7)
+                                            .add(jLabel15))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                                .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                                    .add(layout.createSequentialGroup()
+                                                        .add(jTextField10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                        .add(18, 18, 18)
+                                                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                                    .add(layout.createSequentialGroup()
+                                                        .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                        .add(jLabel12)
+                                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                        .add(jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                                    .add(jCheckBox2))))
+                                        .add(18, 18, 18)
+                                        .add(jLabel11))))
+                            .add(layout.createSequentialGroup()
+                                .add(jRadioButton1)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jRadioButton2))
+                            .add(jLabel16)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSeparator2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jLabel13)
+                                    .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                                    .add(jLabel17))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jCheckBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 193, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(jTextField11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(jTextField9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(268, 268, 268)))
+                        .add(100, 100, 100))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -366,6 +389,10 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
                     .add(jLabel4)
                     .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextField11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel17))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel6))
@@ -423,7 +450,7 @@ public class CreditCardForm extends javax.swing.JPanel implements TitleLabelInte
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton4)
                     .add(jButton3))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(37, 37, 37))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -449,6 +476,7 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         c.setPostAddress(jTextField9.getText());
         c.setMobilePhoneNumber(jTextField2.getText());
         c.setPhoneNumber(jTextField8.getText());
+        IMatDataHandler.getInstance().getCustomer().setEmail(jTextField11.getText());
     }
     // Set input to credit card info
     if(jCheckBox2.isSelected()){
@@ -554,6 +582,10 @@ private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }*/
 }//GEN-LAST:event_jTextField9KeyTyped
 
+private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+// TODO add your handling code here:
+}//GEN-LAST:event_jTextField11KeyTyped
+
 
 public String getTitle() {
         return title;
@@ -582,6 +614,7 @@ public String getTitle() {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -596,6 +629,7 @@ public String getTitle() {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
