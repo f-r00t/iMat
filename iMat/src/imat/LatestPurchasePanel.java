@@ -111,6 +111,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     IMatDataHandler.getInstance().getShoppingCart().removeItem(item);
     IMatView.getShoppingItems().remove(item.getProduct());
+    IMatView.cartPanel.updateCart();
     this.getParent().remove(this);
 }//GEN-LAST:event_jButton1ActionPerformed
 

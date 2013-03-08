@@ -36,6 +36,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
     
     public void updateCart(){
         jPanel4.removeAll();
+        IMatDataHandler.getInstance().shutDown();
         cart = IMatDataHandler.getInstance().getShoppingCart().getItems();
         jPanel4.setLayout(new GridLayout(cart.size(), 1));
         
@@ -254,6 +255,7 @@ public class kundvagnPanel extends javax.swing.JPanel implements TitleLabelInter
 private void emptyCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyCartBtnActionPerformed
     IMatDataHandler.getInstance().getShoppingCart().clear();
     updateCart();
+    IMatView.clearLatest();
 }//GEN-LAST:event_emptyCartBtnActionPerformed
 
 private void sparaInkopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaInkopBtnActionPerformed

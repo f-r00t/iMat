@@ -34,6 +34,8 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         
         if(silList != null)
             addTopItems(silList);
+        else
+            jLabel4.setText("Datum");
         
         this.title = title;
         sList = new ArrayList<ShoppingListItemPanel>();
@@ -234,26 +236,16 @@ public class SavedListsPanel extends javax.swing.JPanel implements TitleLabelInt
         jPanel3.removeAll();
         List<Order> oList = IMatDataHandler.getInstance().getOrders();
         Collections.reverse(oList);
-        
-        /*
-        List<ShoppingItemList> sList = new ArrayList<ShoppingItemList>();
-        for(Order o : oList){
-            ShoppingItemList sil = new ShoppingItemList();
-            sil.setFromOrder(o);
-            sList.add(sil);
-        */
-        
-        addTopItemsOrder();
+                
+        addTopItemsOrder(oList);
     }
     
     public void removeItem(ShoppingListItemPanel s){
         sList.remove(s);
     }
     
-    public void addTopItemsOrder(){
+    public void addTopItemsOrder(List<Order> oList){
         int height = 0;
-        List<Order> oList = IMatDataHandler.getInstance().getOrders();
-        Collections.reverse(oList);
         jPanel1.removeAll();
         if(oList.size() <= 3){
             jPanel1.setLayout(new GridLayout(3, 1));
