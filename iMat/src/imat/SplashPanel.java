@@ -153,19 +153,21 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
 
         setName("Form"); // NOI18N
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(SplashPanel.class);
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(resourceMap.getColor("jPanel1.border.lineColor"))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 140));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setBackground(resourceMap.getColor("jPanel2.background")); // NOI18N
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 20));
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(SplashPanel.class);
+        jLabel1.setBackground(resourceMap.getColor("jLabel1.background")); // NOI18N
         jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
+        jLabel1.setForeground(resourceMap.getColor("jLabel1.foreground")); // NOI18N
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel1.setName("jLabel1"); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
@@ -202,8 +204,9 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 161, Short.MAX_VALUE)
             .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(jPanel8Layout.createSequentialGroup()
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel8Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -214,12 +217,13 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel4.setPreferredSize(new java.awt.Dimension(260, 430));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
+        jPanel7.setBackground(resourceMap.getColor("jPanel7.background")); // NOI18N
         jPanel7.setName("jPanel7"); // NOI18N
         jPanel7.setPreferredSize(new java.awt.Dimension(258, 25));
 
         jLabel3.setFont(resourceMap.getFont("jLabel3.font")); // NOI18N
+        jLabel3.setForeground(resourceMap.getColor("jLabel3.foreground")); // NOI18N
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel3.setName("jLabel3"); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel7Layout = new org.jdesktop.layout.GroupLayout(jPanel7);
@@ -279,11 +283,12 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel9.setPreferredSize(new java.awt.Dimension(260, 430));
         jPanel9.setLayout(new java.awt.BorderLayout());
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel10.setBackground(resourceMap.getColor("jPanel10.background")); // NOI18N
         jPanel10.setName("jPanel10"); // NOI18N
         jPanel10.setPreferredSize(new java.awt.Dimension(260, 25));
 
         jLabel2.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
+        jLabel2.setForeground(resourceMap.getColor("jLabel2.foreground")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
@@ -291,11 +296,11 @@ public class SplashPanel extends javax.swing.JPanel implements TitleLabelInterfa
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
         jPanel9.add(jPanel10, java.awt.BorderLayout.PAGE_START);

@@ -90,27 +90,32 @@ public class FoodPanel extends javax.swing.JPanel {
         imageLabel = new javax.swing.JLabel();
         bottomPanel = new javax.swing.JPanel();
         priceUnitLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        amountField = new javax.swing.JTextField();
         plusButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        amountPanel = new javax.swing.JPanel();
+        amountField = new javax.swing.JTextField();
         topLabel = new javax.swing.JPanel();
         nameLabel = new javax.swing.JLabel();
         starButton = new javax.swing.JButton();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(imat.IMatApp.class).getContext().getResourceMap(FoodPanel.class);
         setBackground(resourceMap.getColor("Form.background")); // NOI18N
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(150, 150));
+        setBorder(javax.swing.BorderFactory.createLineBorder(resourceMap.getColor("Form.border.lineColor"))); // NOI18N
+        setBounds(new java.awt.Rectangle(0, 0, 150, 175));
+        setMaximumSize(new java.awt.Dimension(150, 175));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(175, 175));
-        setSize(new java.awt.Dimension(175, 175));
+        setPreferredSize(new java.awt.Dimension(125, 150));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
         setLayout(new java.awt.BorderLayout());
 
         imageLabel.setBackground(resourceMap.getColor("imageLabel.background")); // NOI18N
         imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageLabel.setText(resourceMap.getString("imageLabel.text")); // NOI18N
+        imageLabel.setBounds(new java.awt.Rectangle(0, 0, 125, 120));
         imageLabel.setMaximumSize(new java.awt.Dimension(125, 120));
         imageLabel.setMinimumSize(new java.awt.Dimension(125, 120));
         imageLabel.setName("imageLabel"); // NOI18N
@@ -118,12 +123,16 @@ public class FoodPanel extends javax.swing.JPanel {
         imageLabel.setPreferredSize(new java.awt.Dimension(125, 120));
         add(imageLabel, java.awt.BorderLayout.CENTER);
 
+        bottomPanel.setBackground(resourceMap.getColor("bottomPanel.background")); // NOI18N
         bottomPanel.setMaximumSize(new java.awt.Dimension(125, 25));
         bottomPanel.setMinimumSize(new java.awt.Dimension(125, 25));
         bottomPanel.setName("bottomPanel"); // NOI18N
         bottomPanel.setPreferredSize(new java.awt.Dimension(125, 25));
         bottomPanel.setLayout(new java.awt.BorderLayout());
 
+        priceUnitLabel.setBackground(resourceMap.getColor("priceUnitLabel.background")); // NOI18N
+        priceUnitLabel.setFont(resourceMap.getFont("priceUnitLabel.font")); // NOI18N
+        priceUnitLabel.setForeground(resourceMap.getColor("priceUnitLabel.foreground")); // NOI18N
         priceUnitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceUnitLabel.setText(resourceMap.getString("priceUnitLabel.text")); // NOI18N
         priceUnitLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -131,54 +140,58 @@ public class FoodPanel extends javax.swing.JPanel {
         priceUnitLabel.setPreferredSize(new java.awt.Dimension(80, 16));
         bottomPanel.add(priceUnitLabel, java.awt.BorderLayout.WEST);
 
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        plusButton.setIcon(resourceMap.getIcon("plusButton.icon")); // NOI18N
+        plusButton.setText(resourceMap.getString("plusButton.text")); // NOI18N
+        plusButton.setBorderPainted(false);
+        plusButton.setName("plusButton"); // NOI18N
+        plusButton.setPreferredSize(new java.awt.Dimension(40, 24));
+        bottomPanel.add(plusButton, java.awt.BorderLayout.EAST);
 
-        amountField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        amountPanel.setBackground(resourceMap.getColor("amountPanel.background")); // NOI18N
+        amountPanel.setName("amountPanel"); // NOI18N
+        amountPanel.setPreferredSize(new java.awt.Dimension(35, 25));
+
+        amountField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         amountField.setMaximumSize(new java.awt.Dimension(5, 5));
         amountField.setMinimumSize(new java.awt.Dimension(25, 23));
         amountField.setName("amountField"); // NOI18N
         amountField.setOpaque(true);
-        amountField.setPreferredSize(new java.awt.Dimension(32, 25));
+        amountField.setPreferredSize(new java.awt.Dimension(25, 23));
         amountField.setVerifyInputWhenFocusTarget(false);
         amountField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 amountFieldKeyTyped(evt);
             }
         });
-        jPanel1.add(amountField, java.awt.BorderLayout.CENTER);
 
-        plusButton.setText(resourceMap.getString("plusButton.text")); // NOI18N
-        plusButton.setName("plusButton"); // NOI18N
-        plusButton.setPreferredSize(new java.awt.Dimension(40, 24));
-        jPanel1.add(plusButton, java.awt.BorderLayout.LINE_END);
-
-        bottomPanel.add(jPanel1, java.awt.BorderLayout.EAST);
-
-        jPanel2.setName("jPanel2"); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(20, 25));
-
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 122, Short.MAX_VALUE)
+        org.jdesktop.layout.GroupLayout amountPanelLayout = new org.jdesktop.layout.GroupLayout(amountPanel);
+        amountPanel.setLayout(amountPanelLayout);
+        amountPanelLayout.setHorizontalGroup(
+            amountPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, amountPanelLayout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .add(amountField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 25, Short.MAX_VALUE)
+        amountPanelLayout.setVerticalGroup(
+            amountPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, amountField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
-        bottomPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
+        bottomPanel.add(amountPanel, java.awt.BorderLayout.CENTER);
 
         add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
+        topLabel.setBackground(resourceMap.getColor("topLabel.background")); // NOI18N
         topLabel.setMaximumSize(new java.awt.Dimension(125, 25));
         topLabel.setMinimumSize(new java.awt.Dimension(125, 25));
         topLabel.setName("topLabel"); // NOI18N
         topLabel.setPreferredSize(new java.awt.Dimension(125, 25));
         topLabel.setLayout(new java.awt.BorderLayout());
 
+        nameLabel.setBackground(resourceMap.getColor("nameLabel.background")); // NOI18N
+        nameLabel.setFont(resourceMap.getFont("nameLabel.font")); // NOI18N
+        nameLabel.setForeground(resourceMap.getColor("nameLabel.foreground")); // NOI18N
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nameLabel.setText(resourceMap.getString("nameLabel.text")); // NOI18N
         nameLabel.setMaximumSize(new java.awt.Dimension(126, 16));
@@ -255,10 +268,9 @@ public void setIconSize(int width, int height){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amountField;
+    private javax.swing.JPanel amountPanel;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JButton plusButton;
     private javax.swing.JLabel priceUnitLabel;
